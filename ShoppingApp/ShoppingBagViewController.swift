@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ShoppingBagViewController.swift
 //  ShoppingApp
 //
 //  Created by Juan Manuel Gago on 4/19/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ShoppingBagViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
