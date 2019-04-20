@@ -21,7 +21,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="zmf-Zq-vax">
-                        <barButtonItem key="rightBarButtonItem" title="Push" id="Sgm-wa-pie" userLabel="shoppingBagButton">
+                        <barButtonItem key="rightBarButtonItem" image="icon-cart" id="Sgm-wa-pie" userLabel="shoppingBagButton">
                             <connections>
                                 <segue destination="KVx-Zg-sm7" kind="show" id="ldt-WA-Mym"/>
                             </connections>
@@ -66,4 +66,7 @@
             <point key="canvasLocation" x="-214" y="126"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon-cart" width="24" height="21"/>
+    </resources>
 </document>
