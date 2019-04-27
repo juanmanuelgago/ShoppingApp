@@ -10,19 +10,5 @@ import UIKit
 
 class MainNavigationController: UINavigationController {
     
-    let shoppingCart = ShoppingCart()
-    var banners: [ItemBanner] = []
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        let data = DataModelManager.shared.getDataForShoppingCart()
-        shoppingCart.createItems(items: data)
-        
-        banners = DataModelManager.shared.getDataForBanner()
-
-        // Initializes the ShoppingCart
-        // Load the data from the Singleton
-    }
-
 }

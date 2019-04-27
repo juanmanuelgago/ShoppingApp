@@ -10,16 +10,38 @@ import UIKit
 
 class ShoppingBagViewController: UIViewController {
 
+    @IBOutlet weak var bannerCollectionView: UICollectionView!
+    
+    let shoppingCart = ShoppingCart()
+    var banners: [ItemBanner] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        let data = DataModelManager.shared.getDataForShoppingCart()
+        shoppingCart.createItems(items: data)
+        
+        banners = DataModelManager.shared.getDataForBanner()
     }
+    
+}
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+extension ShoppingBagViewController: UICollectionViewDelegate,
+UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return banners.count
     }
-
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let identifier = "BannerCell"
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! BannerCollectionViewCell
+        cell.bannerImageView.image = banners[indexPath.item].bannerImage
+        cell.titleLabel.text = banners[indexPath.item].title
+        cell.descriptionLabel.text = banners[indexPath.item].description
+        return cell
+    }
 
 }
+
 
