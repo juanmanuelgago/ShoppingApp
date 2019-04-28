@@ -31,16 +31,30 @@ class ShoppingCart {
         
     }
     
-    // TODO: Method to increase one more value to the item in the parameter.
-    // Need to check, maximum value is ten.
-    func addItem(itemToAdd: Item) {
-        
+    // Method to increase one in the specified item.
+    func addItem(itemToAdd: Item) -> Int {
+        if var amountOfItem = itemQuantity[itemToAdd] as Int? {
+            if amountOfItem < 10 {
+                amountOfItem += 1
+                itemQuantity[itemToAdd] = amountOfItem
+            }
+            return itemQuantity[itemToAdd]!
+        } else {
+            return 0
+        }
     }
     
-    // TODO: Method to decrease one more value to the item in the parameter.
-    // Need to check, minimum value is zero.
-    func subtractItem(itemToSubtract: Item) {
-        
+    // Method to decrease one in the specified item.
+    func subtractItem(itemToSubtract: Item) -> Int {
+        if var amountOfItem = itemQuantity[itemToSubtract] as Int? {
+            if amountOfItem > 0 {
+                amountOfItem -= 1
+                itemQuantity[itemToSubtract] = amountOfItem
+            }
+            return itemQuantity[itemToSubtract]!
+        } else {
+            return 0
+        }
     }
     
 }
