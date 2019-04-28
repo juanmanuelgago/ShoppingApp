@@ -15,7 +15,8 @@ class ShoppingBagViewController: UIViewController {
     
     let shoppingCart = ShoppingCart()
     var banners: [ItemBanner] = []
-    var items: [Item] = []
+    var items: [[Item]] = []
+    var categories: [ItemCategory] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,9 +25,12 @@ class ShoppingBagViewController: UIViewController {
     
     func initialConfiguration() {
         let data = DataModelManager.shared.getDataForShoppingCart()
-        shoppingCart.createItems(items: data)
-        banners = DataModelManager.shared.getDataForBanner()
+        for dataArray in data {
+            shoppingCart.createItems(items: dataArray)
+        }
         items = data
+        banners = DataModelManager.shared.getDataForBanner()
+        categories = DataModelManager.shared.getDataForCategories()
     }
     
 }
@@ -68,16 +72,26 @@ extension ShoppingBagViewController: ItemCellDelegate {
 extension ShoppingBagViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return shoppingCart.itemQuantity.count
+        return items[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let identifier = "ItemCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! ItemTableViewCell
-        cell.setItem(item: items[indexPath.row])
+        let itemToPutInCell = items[indexPath.section][indexPath.row]
+        cell.setItem(item: itemToPutInCell)
         cell.itemDelegate = self
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return categories[section].rawValue
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return categories.count
+    }
+    
     
 }
 

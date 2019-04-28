@@ -32,6 +32,7 @@ class ItemTableViewCell: UITableViewCell {
         super.awakeFromNib()
         styleButtons()
         styleImage()
+        initQuantityStatus()
     }
     
     func setItem(item: Item) {
@@ -40,7 +41,6 @@ class ItemTableViewCell: UITableViewCell {
             nameLabel.text = item.name
             priceLabel.text = "$" + String(item.price)
             itemImage.image = smallImageItem
-            quantityLabel.text = "0"
         }
         handleButtons()
     }
@@ -60,6 +60,11 @@ class ItemTableViewCell: UITableViewCell {
             }
         }
     }
+    
+    // First initialization for the quantity label.
+    func initQuantityStatus() {
+        quantityLabel.text = "0"
+    }
 
     // Rounded image in the cell.
     func styleImage() {
@@ -71,7 +76,7 @@ class ItemTableViewCell: UITableViewCell {
     // Add Button with the style in the design
     func styleButtons() {
         addButton.backgroundColor = .clear
-        addButton.layer.cornerRadius = 20
+        addButton.layer.cornerRadius = 15
         addButton.layer.borderColor = UIColor.purple.cgColor
         addButton.layer.borderWidth = 2
     }

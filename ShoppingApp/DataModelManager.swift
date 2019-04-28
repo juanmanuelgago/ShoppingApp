@@ -16,7 +16,7 @@ class DataModelManager {
     private init() { }
     
     // Initialize data for the ViewController
-    func getDataForShoppingCart() -> [Item] {
+    func getDataForShoppingCart() -> [[Item]] {
         
         let avocadoImage = UIImage(named: "Avocado")!
         let avocadoItem = Item(name: "Avocado", price: 10, category: ItemCategory.veggie, smallImage: avocadoImage, bigImage: avocadoImage)
@@ -36,9 +36,10 @@ class DataModelManager {
         let watermelonBigImage = UIImage(named: "Watermelon")!
         let watermelonItem = Item(name: "Watermelon", price: 10, category: ItemCategory.fruit, smallImage: watermelonSmallImage, bigImage: watermelonBigImage)
 
-        let arrayItems = [avocadoItem, cucumberItem, grapefruitItem, kiwiItem, watermelonItem]
+        let fruitArray = [grapefruitItem, kiwiItem, watermelonItem]
+        let veggieArray = [avocadoItem, cucumberItem]
 
-        return arrayItems
+        return [fruitArray, veggieArray]
     }
     
     func getDataForBanner() -> [ItemBanner] {
@@ -57,6 +58,14 @@ class DataModelManager {
         
         let arrayItems = [bananaBanner, grapefruitBanner, cucumberBanner, kiwiBanner]
         return arrayItems
+        
     }
     
+    func getDataForCategories() -> [ItemCategory] {
+        
+        return [ItemCategory.fruit, ItemCategory.veggie]
+        
+    }
+    
+        
 }
