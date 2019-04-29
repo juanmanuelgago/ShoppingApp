@@ -13,6 +13,7 @@ class ShoppingBagViewController: UIViewController {
     @IBOutlet weak var bannerCollectionView: UICollectionView!
     @IBOutlet weak var itemTableView: UITableView!
     @IBOutlet weak var itemSearchBar: UISearchBar!
+    @IBOutlet weak var bannerPageControl: UIPageControl!
     
     let shoppingCart = ShoppingCart()
     var banners: [ItemBanner] = []
@@ -37,12 +38,25 @@ class ShoppingBagViewController: UIViewController {
         categories = DataModelManager.shared.getDataForCategories()
     }
     
+    @IBAction func moveToSelectedBanner(_ sender: Any) {
+        bannerCollectionView.scrollToItem(at: IndexPath(item: bannerPageControl.currentPage, section: 0), at: .right, animated: true)
+    }
 }
 
 extension ShoppingBagViewController: UICollectionViewDelegate,
-UICollectionViewDataSource {
+UICollectionViewDataSource, UIScrollViewDelegate {
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        bannerPageControl?.currentPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
+    }
+    
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        bannerPageControl?.currentPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        bannerPageControl.numberOfPages = banners.count
+        bannerPageControl.isHidden = !(banners.count > 1)
         return banners.count
     }
     

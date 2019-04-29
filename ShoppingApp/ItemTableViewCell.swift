@@ -59,6 +59,11 @@ class ItemTableViewCell: UITableViewCell {
                 subtractOneButton.isHidden = false
                 quantityLabel.isHidden = false
             }
+        } else {
+            addButton.isHidden = false
+            addOneButton.isHidden = true
+            subtractOneButton.isHidden = true
+            quantityLabel.isHidden = true
         }
     }
 
