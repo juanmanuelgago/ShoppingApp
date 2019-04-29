@@ -9,9 +9,10 @@
 import UIKit
 
 protocol ItemCellDelegate {
-    // Protocol to connect the actions in the cell with the ShoppingCart instance in the controller, in order to modify the quantity of the item.
+    // Protocol to connect the actions in the cell with the ShoppingCart instance in the controller, in order to modify the quantity of the item, and to get the actual value.
     func didIncreaseItemQuantity(item: Item) -> String
     func didDecreaseItemQuantity(item: Item) -> String
+    func getItemQuantity(item: Item) -> String
     
 }
 
@@ -32,7 +33,6 @@ class ItemTableViewCell: UITableViewCell {
         super.awakeFromNib()
         styleButtons()
         styleImage()
-        initQuantityStatus()
     }
     
     func setItem(item: Item) {
@@ -41,6 +41,7 @@ class ItemTableViewCell: UITableViewCell {
             nameLabel.text = item.name
             priceLabel.text = "$" + String(item.price)
             itemImage.image = smallImageItem
+            quantityLabel.text = itemDelegate?.getItemQuantity(item: item)
         }
         handleButtons()
     }
@@ -59,11 +60,6 @@ class ItemTableViewCell: UITableViewCell {
                 quantityLabel.isHidden = false
             }
         }
-    }
-    
-    // First initialization for the quantity label.
-    func initQuantityStatus() {
-        quantityLabel.text = "0"
     }
 
     // Rounded image in the cell.

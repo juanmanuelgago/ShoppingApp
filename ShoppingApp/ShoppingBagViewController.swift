@@ -12,11 +12,15 @@ class ShoppingBagViewController: UIViewController {
 
     @IBOutlet weak var bannerCollectionView: UICollectionView!
     @IBOutlet weak var itemTableView: UITableView!
+    @IBOutlet weak var itemSearchBar: UISearchBar!
     
     let shoppingCart = ShoppingCart()
     var banners: [ItemBanner] = []
     var items: [[Item]] = []
     var categories: [ItemCategory] = []
+    
+    var filteredItems: [[Item]] = []
+    var searching = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,18 +71,32 @@ extension ShoppingBagViewController: ItemCellDelegate {
         return String(newValue)
     }
     
+    func getItemQuantity(item: Item) -> String {
+        let actualValue = shoppingCart.getItemQuantity(itemToGet: item)
+        return  String(actualValue)
+    }
+    
 }
 
 extension ShoppingBagViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items[section].count
+        if searching {
+            return filteredItems[section].count
+        } else {
+            return items[section].count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let identifier = "ItemCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! ItemTableViewCell
-        let itemToPutInCell = items[indexPath.section][indexPath.row]
+        var itemToPutInCell: Item
+        if searching {
+            itemToPutInCell = filteredItems[indexPath.section][indexPath.row]
+        } else {
+            itemToPutInCell = items[indexPath.section][indexPath.row]
+        }
         cell.setItem(item: itemToPutInCell)
         cell.itemDelegate = self
         return cell
@@ -92,6 +110,29 @@ extension ShoppingBagViewController: UITableViewDelegate, UITableViewDataSource 
         return categories.count
     }
     
+}
+
+extension ShoppingBagViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.count > 0 {
+            filteredItems = []
+            let categories = itemTableView.numberOfSections
+            var newFilteredItems: [[Item]] = []
+            for i in 0...categories - 1 {
+                var filteredItemsForCategory: [Item] = []
+                filteredItemsForCategory = items[i].filter({ (item: Item) -> Bool in
+                    return item.name.lowercased().contains(searchText.lowercased())
+                })
+                newFilteredItems.append(filteredItemsForCategory)
+            }
+            filteredItems = newFilteredItems
+            searching = true
+        } else {
+            searching = false
+        }
+        itemTableView.reloadData()
+    }
     
 }
 
