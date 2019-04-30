@@ -28,6 +28,11 @@ class ShoppingBagViewController: UIViewController {
         initialConfiguration()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinyViewController = segue.destination as! CheckoutViewController
+        destinyViewController.shoppingCart = self.shoppingCart
+    }
+    
     func initialConfiguration() {
         let data = DataModelManager.shared.getDataForShoppingCart()
         for dataArray in data {
@@ -40,6 +45,17 @@ class ShoppingBagViewController: UIViewController {
     
     @IBAction func moveToSelectedBanner(_ sender: Any) {
         bannerCollectionView.scrollToItem(at: IndexPath(item: bannerPageControl.currentPage, section: 0), at: .right, animated: true)
+    }
+    
+    @IBAction func prepareShoppingBagForCheckout(_ sender: Any) {
+        let isEmpty = shoppingCart.isEmpty()
+        if !isEmpty {
+            performSegue(withIdentifier: "CheckoutSegue", sender: self)
+        } else {
+            let alertController = UIAlertController(title: "Error", message: "Your shopping cart is empty!", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
 }
 
@@ -111,8 +127,8 @@ extension ShoppingBagViewController: UITableViewDelegate, UITableViewDataSource 
         } else {
             itemToPutInCell = items[indexPath.section][indexPath.row]
         }
-        cell.setItem(item: itemToPutInCell)
         cell.itemDelegate = self
+        cell.setItem(item: itemToPutInCell)
         return cell
     }
     

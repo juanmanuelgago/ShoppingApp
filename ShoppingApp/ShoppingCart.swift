@@ -14,6 +14,28 @@ class ShoppingCart {
     
     init() { }
     
+    // Checks if there's at least one item in the dictionary.
+    func isEmpty() -> Bool {
+        for itemKey in itemQuantity.keys {
+            let itemQuantity = getItemQuantity(itemToGet: itemKey)
+            if itemQuantity > 0 {
+                return false
+            }
+        }
+        return true
+    }
+    
+    // Return the number of items with its quantity different than zero.
+    func itemsWithQuantity() -> [Item] {
+        var itemsWithQuantity: [Item] = []
+        for (item, quantity) in itemQuantity {
+            if quantity > 0 {
+                itemsWithQuantity.append(item)
+            }
+        }
+        return itemsWithQuantity
+    }
+    
     // Initializes the dictionary in the shopping cart.
     func createItems(items: [Item]) {
         for item in items {
@@ -22,13 +44,13 @@ class ShoppingCart {
     }
     
     // TODO: Method to calculate the final price after checkout.
-    func getFinalPrice() {
-        
-    }
-    
-    // TODO: Method to restore the dictionary to its initial state (Empty).
-    func clearItems() {
-        
+    func getFinalPrice() -> Int {
+        var finalPrice = 0
+        for (item, quantity) in itemQuantity {
+            var priceForItem = item.price * quantity
+            finalPrice += priceForItem
+        }
+        return finalPrice
     }
     
     // Method to increase one in the specified item.
