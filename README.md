@@ -9,4 +9,3 @@ Created purely for academic purposes.
 * Increase / Decrease the amount of items in the shopping bag.
 * See the final checkout value of the shopping bag created.
 * Filter the different items offered by the supermarket.
-* 
