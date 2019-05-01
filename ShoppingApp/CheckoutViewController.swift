@@ -24,6 +24,12 @@ class CheckoutViewController: UIViewController {
         initialConfiguration()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinyViewController = segue.destination as! ShoppingBagViewController
+        destinyViewController.shoppingCart.clearItems()
+//        destinyViewController.initialConfiguration()
+    }
+    
     func initialConfiguration() {
         items = shoppingCart.itemsWithQuantity()
         setTotalPriceLabel()
@@ -39,7 +45,11 @@ class CheckoutViewController: UIViewController {
     }
     
     @IBAction func checkoutShoppingCart(_ sender: Any) {
-        // TODO: Checkout Button Click Action
+        let alert = UIAlertController(title: "Successful Purchase", message: "Everything went OK", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+            self.performSegue(withIdentifier: "RestartSegue", sender: self)
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 

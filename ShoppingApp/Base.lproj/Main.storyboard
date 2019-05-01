@@ -24,7 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="H2D-eq-dhP">
-                                <rect key="frame" x="0.0" y="88" width="375" height="200"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="200"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="Z4e-EU-oL0"/>
@@ -85,14 +85,14 @@
                                 </connections>
                             </collectionView>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="8xN-dO-eEb">
-                                <rect key="frame" x="0.0" y="325" width="375" height="56"/>
+                                <rect key="frame" x="0.0" y="281" width="375" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="2nD-Pb-Z7Q"/>
                                 </connections>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zRA-Vi-8MN">
-                                <rect key="frame" x="0.0" y="381" width="375" height="397"/>
+                                <rect key="frame" x="0.0" y="337" width="375" height="441"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ItemCell" rowHeight="99" id="8SZ-9x-Y9e" customClass="ItemTableViewCell" customModule="ShoppingApp" customModuleProvider="target">
@@ -122,7 +122,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kS4-iD-lVC">
-                                                    <rect key="frame" x="248.66666666666663" y="37.666666666666671" width="106.33333333333334" height="30"/>
+                                                    <rect key="frame" x="248.66666666666666" y="37.666666666666671" width="106.33333333333334" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
                                                     <state key="normal" title="Add">
                                                         <color key="titleColor" red="0.36862745098039218" green="0.29411764705882354" blue="0.80392156862745101" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -196,7 +196,7 @@
                                 </connections>
                             </tableView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="75V-JK-Vdj">
-                                <rect key="frame" x="168" y="280" width="39" height="37"/>
+                                <rect key="frame" x="168" y="236" width="39" height="37"/>
                                 <color key="pageIndicatorTintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="currentPageIndicatorTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
@@ -250,7 +250,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="PN2-8S-xQB">
-                                <rect key="frame" x="0.0" y="88" width="375" height="492"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="536"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="TQL-KC-yja">
                                     <size key="itemSize" width="175" height="243"/>
@@ -368,11 +368,12 @@
                         <outlet property="checkoutButton" destination="HJZ-T3-Ndk" id="cwa-qW-9UU"/>
                         <outlet property="itemCollectionView" destination="PN2-8S-xQB" id="A9u-E0-tkF"/>
                         <outlet property="totalPriceLabel" destination="UWB-Dt-rbl" id="CBi-bS-gXD"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="RestartSegue" id="e5W-D2-u7j"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MSQ-Yc-Wbk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1656.8" y="124.8768472906404"/>
+            <point key="canvasLocation" x="1564" y="125"/>
         </scene>
         <!--Main Navigation Controller-->
         <scene sceneID="MiY-px-7M8">
@@ -390,10 +391,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cKE-80-bsq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-214" y="126"/>
+            <point key="canvasLocation" x="38" y="125"/>
         </scene>
     </scenes>
     <resources>
         <image name="icon-cart" width="24" height="21"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="e5W-D2-u7j"/>
+    </inferredMetricsTieBreakers>
 </document>

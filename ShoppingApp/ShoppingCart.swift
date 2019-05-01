@@ -43,11 +43,16 @@ class ShoppingCart {
         }
     }
     
-    // TODO: Method to calculate the final price after checkout.
+    // Clean the dictionary.
+    func clearItems() {
+        itemQuantity = [:]
+    }
+
+    // Method to calculate the final price after checkout.
     func getFinalPrice() -> Int {
         var finalPrice = 0
         for (item, quantity) in itemQuantity {
-            var priceForItem = item.price * quantity
+            let priceForItem = item.price * quantity
             finalPrice += priceForItem
         }
         return finalPrice
