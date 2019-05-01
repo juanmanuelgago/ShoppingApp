@@ -90,4 +90,12 @@ class ShoppingCart {
         return itemQuantity[itemToGet]!
     }
     
+    // Method to get the amount of the specified item, from the dictionary.
+    // Value in dictionary should not be nil, so return statement force unwrap of value.
+    func setItemQuantity(itemToSet: Item, newQuantity: Int) {
+        itemQuantity[itemToSet] = newQuantity
+        print("seteado!")
+        print(itemQuantity[itemToSet]!)
+    }
+    
 }
