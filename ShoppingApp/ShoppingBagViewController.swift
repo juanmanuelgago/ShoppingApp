@@ -29,6 +29,12 @@ class ShoppingBagViewController: UIViewController {
         styleSearchBar()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        itemTableView.reloadData()
+        
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinyViewController = segue.destination as! CheckoutViewController
         destinyViewController.shoppingCart = self.shoppingCart
