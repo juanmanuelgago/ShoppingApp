@@ -26,6 +26,7 @@ class ShoppingBagViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialConfiguration()
+        styleSearchBar()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -42,6 +43,15 @@ class ShoppingBagViewController: UIViewController {
         banners = DataModelManager.shared.getDataForBanner()
         categories = DataModelManager.shared.getDataForCategories()
     }
+    
+    func styleSearchBar() {
+        itemSearchBar.setImage(UIImage(named: "icon-search"), for: UISearchBarIcon.search, state: UIControlState.normal)
+        if let textFieldSearch = itemSearchBar.value(forKey: "_searchField") as? UITextField {
+            textFieldSearch.backgroundColor = UIColor(red: CGFloat(234/255.0), green: CGFloat(235/255.0), blue: CGFloat(242/255.0), alpha: CGFloat(1.0))
+            textFieldSearch.textColor = UIColor(red: CGFloat(160/255.0), green: CGFloat(162/255.0), blue: CGFloat(178/255.0), alpha: CGFloat(1.0))
+        }
+    }
+    
     
     @IBAction func moveToSelectedBanner(_ sender: Any) {
         bannerCollectionView.scrollToItem(at: IndexPath(item: bannerPageControl.currentPage, section: 0), at: .right, animated: true)

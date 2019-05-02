@@ -84,8 +84,9 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="FXU-DU-mrb"/>
                                 </connections>
                             </collectionView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="8xN-dO-eEb">
+                            <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="8xN-dO-eEb">
                                 <rect key="frame" x="0.0" y="281" width="375" height="56"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="2nD-Pb-Z7Q"/>
@@ -398,6 +399,7 @@
         <image name="icon-cart" width="24" height="21"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="ezE-t5-NOh"/>
         <segue reference="e5W-D2-u7j"/>
     </inferredMetricsTieBreakers>
 </document>
