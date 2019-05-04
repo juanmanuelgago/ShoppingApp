@@ -29,11 +29,6 @@ class CheckoutViewController: UIViewController {
         initialConfiguration()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinyViewController = segue.destination as! ShoppingBagViewController
-        destinyViewController.shoppingCart.clearItems()
-    }
-    
     func initialConfiguration() {
         items = shoppingCart.itemsWithQuantity()
         setTotalPriceLabel()
@@ -48,13 +43,20 @@ class CheckoutViewController: UIViewController {
         checkoutButton.layer.cornerRadius = checkoutButton.frame.height / 2
     }
     
+    func popCheckoutPage() {
+        shoppingCart.clearItems()
+        navigationController?.popViewController(animated: true)
+    }
+    
     @IBAction func checkoutShoppingCart(_ sender: Any) {
         let alert = UIAlertController(title: "Successful Purchase", message: "Everything went OK", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
-            self.performSegue(withIdentifier: "RestartSegue", sender: self)
+            self.popCheckoutPage()
         }))
         self.present(alert, animated: true, completion: nil)
     }
+    
+    
 }
 
 extension CheckoutViewController: UICollectionViewDelegate, UICollectionViewDataSource {

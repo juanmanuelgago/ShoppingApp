@@ -43,9 +43,11 @@ class ShoppingCart {
         }
     }
     
-    // Clean the dictionary.
+    // Reinitializes dictionary to zero items.
     func clearItems() {
-        itemQuantity = [:]
+        for (item, _) in itemQuantity {
+            itemQuantity[item] = 0
+        }
     }
 
     // Method to calculate the final price after checkout.
