@@ -76,7 +76,7 @@ class ShoppingBagViewController: UIViewController {
 }
 
 extension ShoppingBagViewController: UICollectionViewDelegate,
-UICollectionViewDataSource, UIScrollViewDelegate {
+UICollectionViewDataSource, UIScrollViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         bannerPageControl?.currentPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
@@ -99,6 +99,10 @@ UICollectionViewDataSource, UIScrollViewDelegate {
         cell.titleLabel.text = banners[indexPath.row].title
         cell.descriptionLabel.text = banners[indexPath.row].description
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height)
     }
 
 }

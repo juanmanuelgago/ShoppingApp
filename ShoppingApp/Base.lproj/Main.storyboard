@@ -23,37 +23,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="H2D-eq-dhP">
-                                <rect key="frame" x="0.0" y="44" width="375" height="200"/>
+                            <collectionView multipleTouchEnabled="YES" contentMode="scaleAspectFit" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="H2D-eq-dhP">
+                                <rect key="frame" x="15" y="44" width="345" height="200"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="Z4e-EU-oL0"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="RPc-Sn-i3q">
-                                    <size key="itemSize" width="375" height="173"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="RPc-Sn-i3q">
+                                    <size key="itemSize" width="375" height="170"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BannerCell" id="pmS-IJ-7gQ" customClass="BannerCollectionViewCell" customModule="ShoppingApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="13.666666666666666" width="375" height="173"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="BannerCell" id="pmS-IJ-7gQ" customClass="BannerCollectionViewCell" customModule="ShoppingApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="15" width="375" height="170"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="173"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="170"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8Tw-Za-dPS">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="173"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="170"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lEy-qH-yuK">
-                                                    <rect key="frame" x="28.666666666666657" y="112" width="319" height="15"/>
+                                                    <rect key="frame" x="28.666666666666657" y="109" width="319" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nr2-gZ-K1M">
-                                                    <rect key="frame" x="28.666666666666657" y="131" width="319" height="22"/>
+                                                    <rect key="frame" x="28.666666666666657" y="128" width="319" height="22"/>
                                                     <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
                                                     <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -212,9 +212,9 @@
                             <constraint firstItem="75V-JK-Vdj" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="CyN-nO-eTe"/>
                             <constraint firstItem="8xN-dO-eEb" firstAttribute="leading" secondItem="zRA-Vi-8MN" secondAttribute="leading" id="Hnu-Pb-VFy"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zRA-Vi-8MN" secondAttribute="trailing" id="Ozs-VK-yYA"/>
-                            <constraint firstItem="H2D-eq-dhP" firstAttribute="leading" secondItem="zRA-Vi-8MN" secondAttribute="leading" id="To7-hp-LM4"/>
+                            <constraint firstItem="H2D-eq-dhP" firstAttribute="leading" secondItem="zRA-Vi-8MN" secondAttribute="leading" constant="15" id="To7-hp-LM4"/>
                             <constraint firstItem="zRA-Vi-8MN" firstAttribute="top" secondItem="8xN-dO-eEb" secondAttribute="bottom" id="ZXJ-is-OC7"/>
-                            <constraint firstItem="zRA-Vi-8MN" firstAttribute="trailing" secondItem="H2D-eq-dhP" secondAttribute="trailing" id="fTp-Uf-oMB"/>
+                            <constraint firstItem="zRA-Vi-8MN" firstAttribute="trailing" secondItem="H2D-eq-dhP" secondAttribute="trailing" constant="15" id="fTp-Uf-oMB"/>
                             <constraint firstItem="8xN-dO-eEb" firstAttribute="top" secondItem="75V-JK-Vdj" secondAttribute="bottom" constant="8" id="hSb-O4-puy"/>
                             <constraint firstItem="zRA-Vi-8MN" firstAttribute="top" secondItem="8xN-dO-eEb" secondAttribute="centerY" constant="28" id="ikp-M1-mF4"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="zRA-Vi-8MN" secondAttribute="bottom" id="inK-AL-PA8"/>
