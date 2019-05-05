@@ -18,6 +18,16 @@ class ItemCollectionViewCell: UICollectionViewCell {
     var itemCell: Item!
     var itemDelegate: ItemCellDelegate?
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        styleImage()
+    }
+    
+    func styleImage() {
+        itemImage.layer.cornerRadius = 7.5
+        itemImage.clipsToBounds = true
+    }
+    
     func setItem(item: Item) {
         if let _ = item.smallImage as UIImage?, let bigImageItem = item.bigImage as UIImage? {
             itemCell = item

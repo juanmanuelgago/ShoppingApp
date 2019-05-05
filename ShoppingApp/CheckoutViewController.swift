@@ -101,7 +101,12 @@ extension CheckoutViewController: UICollectionViewDelegate, UICollectionViewData
         }
     }
     
-    
+}
+
+extension CheckoutViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: (collectionView.bounds.width/2) - 7.5, height: collectionView.bounds.height/2)
+    }
 }
 
 extension CheckoutViewController: ItemCellDelegate {
