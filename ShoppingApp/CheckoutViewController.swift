@@ -24,14 +24,19 @@ class CheckoutViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         styleCheckoutButton()
         initialConfiguration()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        self.navigationController?.navigationBar.prefersLargeTitles = false
     }
     
     func initialConfiguration() {
         items = shoppingCart.itemsWithQuantity()
         setTotalPriceLabel()
+        self.navigationItem.title = "Shopping Cart"
     }
     
     func setTotalPriceLabel() {

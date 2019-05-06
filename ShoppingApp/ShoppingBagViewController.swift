@@ -34,6 +34,11 @@ class ShoppingBagViewController: UIViewController {
         itemTableView.reloadData()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinyViewController = segue.destination as! CheckoutViewController
         destinyViewController.shoppingCart = self.shoppingCart
