@@ -90,6 +90,10 @@ UICollectionViewDataSource, UIScrollViewDelegate, UICollectionViewDelegateFlowLa
         bannerPageControl?.currentPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
     }
     
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        itemSearchBar.endEditing(true)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         bannerPageControl.numberOfPages = banners.count
         bannerPageControl.isHidden = !(banners.count > 1)
@@ -187,6 +191,12 @@ extension ShoppingBagViewController: UISearchBarDelegate {
         }
         itemTableView.reloadData()
     }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        itemSearchBar.endEditing(true)
+    }
+    
+    
     
 }
 
