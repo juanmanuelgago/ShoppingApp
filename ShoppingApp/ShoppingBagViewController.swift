@@ -100,6 +100,7 @@ UICollectionViewDataSource, UIScrollViewDelegate, UICollectionViewDelegateFlowLa
         return banners.count
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let identifier = "BannerCell"
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! BannerCollectionViewCell
@@ -109,8 +110,9 @@ UICollectionViewDataSource, UIScrollViewDelegate, UICollectionViewDelegateFlowLa
         return cell
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height)
+        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
     }
 
 }
