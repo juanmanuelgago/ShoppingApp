@@ -19,6 +19,7 @@ class BannerCollectionViewCell: UICollectionViewCell {
         styleImage()
     }
     
+    // Method to style the banner image in the cells of the collection view in the shopping bag view controller.
     func styleImage() {
         bannerImageView.layer.cornerRadius = 5
         bannerImageView.clipsToBounds = true

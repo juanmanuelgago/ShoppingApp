@@ -9,7 +9,7 @@
 import Foundation
 
 protocol ItemQuantityDelegate {
-    // Protocol to connect the actions in the cell with the ShoppingCart instance in the controller, in order to modify the quantity of the item, and to get the actual value.
+    // Protocol to connect the actions in the cells with the ShoppingBag instance in the controllers, in order to modify the quantity of the item, and to get the actual value.
     func didIncreaseItemQuantity(item: Item) -> String
     func didDecreaseItemQuantity(item: Item) -> String
     func getItemQuantity(item: Item) -> String

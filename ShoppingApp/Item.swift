@@ -24,9 +24,10 @@ class Item {
         self.smallImage = smallImage
         self.bigImage = bigImage
     }
-    
 }
 
+// This extension is needed for the dictionary property in the ShoppingBag class.
+// The static method establishes how to consider that two objects of the Item class are equal.
 extension Item: Hashable {
     var hashValue: Int {
         return name.hashValue ^ price.hashValue

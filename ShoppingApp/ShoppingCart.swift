@@ -10,6 +10,7 @@ import Foundation
 
 class ShoppingCart {
     
+    // Dictionary to handle the relationship item and quantity.s
     var itemQuantity: [Item: Int] = [:]
     
     init() { }
