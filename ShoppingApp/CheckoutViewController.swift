@@ -78,7 +78,8 @@ extension CheckoutViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        toolBar.removeFromSuperview()
+        picker.removeFromSuperview()
         selectedItem = items[indexPath.row]
     
         picker = UIPickerView.init()
