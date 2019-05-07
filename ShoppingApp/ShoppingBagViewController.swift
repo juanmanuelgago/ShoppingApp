@@ -20,7 +20,9 @@ class ShoppingBagViewController: UIViewController {
     var items: [[Item]] = []
     var categories: [ItemCategory] = []
     
+    // Array used when the search bar is being written. Here's the data to be shown.
     var filteredItems: [[Item]] = []
+    // If there's something being written, this property is set to true.
     var searching = false
 
     override func viewDidLoad() {
@@ -31,6 +33,7 @@ class ShoppingBagViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        // If the shopping cart changed a certain value, the table must refresh its cells.
         itemTableView.reloadData()
     }
     
@@ -44,6 +47,7 @@ class ShoppingBagViewController: UIViewController {
         destinyViewController.shoppingCart = self.shoppingCart
     }
     
+    // Retrieves the initial data for the app.
     func initialConfiguration() {
         let data = DataModelManager.shared.getDataForShoppingCart()
         for dataArray in data {
@@ -54,6 +58,7 @@ class ShoppingBagViewController: UIViewController {
         categories = DataModelManager.shared.getDataForCategories()
     }
     
+    // Add style to the search bar in the view.
     func styleSearchBar() {
         itemSearchBar.setImage(UIImage(named: "icon-search"), for: UISearchBarIcon.search, state: UIControlState.normal)
         if let textFieldSearch = itemSearchBar.value(forKey: "_searchField") as? UITextField {
@@ -62,11 +67,12 @@ class ShoppingBagViewController: UIViewController {
         }
     }
     
-    
+    // Action associated to the press of the pager under the banner.
     @IBAction func moveToSelectedBanner(_ sender: Any) {
         bannerCollectionView.scrollToItem(at: IndexPath(item: bannerPageControl.currentPage, section: 0), at: .right, animated: true)
     }
     
+    // Controls the navigation to the checkout page, allowing or stopping the performSegue method.
     @IBAction func prepareShoppingBagForCheckout(_ sender: Any) {
         let isEmpty = shoppingCart.isEmpty()
         if !isEmpty {
@@ -90,6 +96,7 @@ UICollectionViewDataSource, UIScrollViewDelegate, UICollectionViewDelegateFlowLa
         bannerPageControl?.currentPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
     }
     
+    // Dismiss the keyboard when the view is scrolling.
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         itemSearchBar.endEditing(true)
     }
@@ -110,7 +117,7 @@ UICollectionViewDataSource, UIScrollViewDelegate, UICollectionViewDelegateFlowLa
         return cell
     }
     
-    
+    // Establish the size of the cell in the collection view of the banners.
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
     }
@@ -118,6 +125,8 @@ UICollectionViewDataSource, UIScrollViewDelegate, UICollectionViewDelegateFlowLa
 }
 
 extension ShoppingBagViewController: ItemQuantityDelegate {
+    // When the cell of the table executes an action of the protocol, the view controller updates the Shopping Cart declared.
+    // Returns the new value after being set.
 
     // Calls the shopping bag instance to increase one, returns the new value.
     func didIncreaseItemQuantity(item: Item) -> String {
@@ -131,6 +140,7 @@ extension ShoppingBagViewController: ItemQuantityDelegate {
         return String(newValue)
     }
     
+    // Calls the shopping bag instance to get the value of the item specified.
     func getItemQuantity(item: Item) -> String {
         let actualValue = shoppingCart.getItemQuantity(itemToGet: item)
         return  String(actualValue)
@@ -157,7 +167,7 @@ extension ShoppingBagViewController: UITableViewDelegate, UITableViewDataSource 
         } else {
             itemToPutInCell = items[indexPath.section][indexPath.row]
         }
-        cell.itemDelegate = self
+        cell.itemDelegate = self // The view controller is available to detect messages from the cell.
         cell.setItem(item: itemToPutInCell)
         return cell
     }
@@ -174,6 +184,7 @@ extension ShoppingBagViewController: UITableViewDelegate, UITableViewDataSource 
 
 extension ShoppingBagViewController: UISearchBarDelegate {
     
+    // Method is executed when the text of the search bar has changed.
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.count > 0 {
             filteredItems = []
@@ -194,6 +205,7 @@ extension ShoppingBagViewController: UISearchBarDelegate {
         itemTableView.reloadData()
     }
     
+    // Dismisses the keyboard if the search button is pressed.
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         itemSearchBar.endEditing(true)
     }

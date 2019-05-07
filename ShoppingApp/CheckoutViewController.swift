@@ -17,9 +17,12 @@ class CheckoutViewController: UIViewController {
     var shoppingCart = ShoppingCart()
     var items: [Item] = []
     
+    // Instances of the picker and the toolbar. Both are created and shown when a cell is selected.
     var picker = UIPickerView()
     var toolBar = UIToolbar()
+    // This variable bind the value of the picker that's being selected. It's an optional.
     var pickerValue: Int?
+    // This variable gets the instance of the item of the selected cell, when one of those is pressed.
     var selectedItem: Item?
     
     override func viewDidLoad() {
@@ -44,10 +47,12 @@ class CheckoutViewController: UIViewController {
         totalPriceLabel.text = "$" + String(totalPrice)
     }
 
+    // Method to style the Checkout button.
     func styleCheckoutButton() {
         checkoutButton.layer.cornerRadius = checkoutButton.frame.height / 2
     }
     
+    // Finishes the checkout process, cleaning the items of shopping bag.
     func popCheckoutPage() {
         shoppingCart.clearItems()
         navigationController?.popViewController(animated: true)
@@ -61,7 +66,6 @@ class CheckoutViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    
 }
 
 extension CheckoutViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -72,16 +76,17 @@ extension CheckoutViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let identifier = "ItemCell"
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! ItemCollectionViewCell
-        cell.itemDelegate = self
+        cell.itemDelegate = self // Creates the connection between this view controller, and the actions and changes in the item of the collection cell.
         cell.setItem(item: items[indexPath.row])
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        toolBar.removeFromSuperview()
-        picker.removeFromSuperview()
+        toolBar.removeFromSuperview() // Prevents issue of creating multiple pickers if there's one picker active.
+        picker.removeFromSuperview() // Closes the active one, and creates a new one for the last cell touched.
         selectedItem = items[indexPath.row]
     
+        // Code for the picker view.
         picker = UIPickerView.init()
         picker.delegate = self
         picker.backgroundColor = UIColor.white
@@ -91,12 +96,15 @@ extension CheckoutViewController: UICollectionViewDelegate, UICollectionViewData
         picker.frame = CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 300)
         self.view.addSubview(picker)
         
+        // Code for the toolbar, over the picker view.
         toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
         toolBar.barStyle = UIBarStyle.default
         toolBar.items = [UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(onDoneButtonTapped))]
         self.view.addSubview(toolBar)
     }
     
+    // Handles the detection of the press on the "Done" button in the toolbar.
+    // Needs to refresh data, and set the new value in the shopping bag.
     @objc func onDoneButtonTapped() {
         toolBar.removeFromSuperview()
         picker.removeFromSuperview()
@@ -131,6 +139,7 @@ extension CheckoutViewController: ItemQuantityDelegate {
         return String(newValue)
     }
     
+    // Retrieves the value of the item specified, for the cell.
     func getItemQuantity(item: Item) -> String {
         let actualValue = shoppingCart.getItemQuantity(itemToGet: item)
         return  String(actualValue)
@@ -143,10 +152,12 @@ extension CheckoutViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         return 1
     }
     
+    // From 1 to 10... needs only ten rows.
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return 10
     }
     
+    // The values are set to the pickerValue variable.
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         pickerValue = row + 1
     }
