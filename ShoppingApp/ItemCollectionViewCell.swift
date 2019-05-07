@@ -16,7 +16,7 @@ class ItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var priceLabel: UILabel!
     
     var itemCell: Item!
-    var itemDelegate: ItemCellDelegate?
+    var itemDelegate: ItemQuantityDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()

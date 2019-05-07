@@ -117,7 +117,7 @@ UICollectionViewDataSource, UIScrollViewDelegate, UICollectionViewDelegateFlowLa
 
 }
 
-extension ShoppingBagViewController: ItemCellDelegate {
+extension ShoppingBagViewController: ItemQuantityDelegate {
 
     // Calls the shopping bag instance to increase one, returns the new value.
     func didIncreaseItemQuantity(item: Item) -> String {

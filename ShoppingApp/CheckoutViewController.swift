@@ -115,7 +115,7 @@ extension CheckoutViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension CheckoutViewController: ItemCellDelegate {
+extension CheckoutViewController: ItemQuantityDelegate {
     
     // Calls the shopping bag instance to increase one, returns the new value. In Add / Subtract methods, refresh the final price label calling the setTotalPriceLabel method.
     func didIncreaseItemQuantity(item: Item) -> String {

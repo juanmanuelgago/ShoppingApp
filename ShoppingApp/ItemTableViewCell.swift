@@ -8,14 +8,6 @@
 
 import UIKit
 
-protocol ItemCellDelegate {
-    // Protocol to connect the actions in the cell with the ShoppingCart instance in the controller, in order to modify the quantity of the item, and to get the actual value.
-    func didIncreaseItemQuantity(item: Item) -> String
-    func didDecreaseItemQuantity(item: Item) -> String
-    func getItemQuantity(item: Item) -> String
-    
-}
-
 class ItemTableViewCell: UITableViewCell {
 
     @IBOutlet weak var itemImage: UIImageView!
@@ -27,7 +19,7 @@ class ItemTableViewCell: UITableViewCell {
     @IBOutlet weak var addOneButton: UIButton!
     
     var itemCell: Item!
-    var itemDelegate: ItemCellDelegate?
+    var itemDelegate: ItemQuantityDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()

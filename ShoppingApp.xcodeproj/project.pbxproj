@@ -21,6 +21,7 @@
 		FF54A764226A923C0046B0F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF54A762226A923C0046B0F5 /* LaunchScreen.storyboard */; };
 		FF54A76D226A94D70046B0F5 /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF54A76C226A94D70046B0F5 /* CheckoutViewController.swift */; };
 		FF54A76F226A9EC70046B0F5 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF54A76E226A9EC70046B0F5 /* MainNavigationController.swift */; };
+		FF56C3EA22811C1B00D58BBF /* ItemQuantityDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF56C3E922811C1B00D58BBF /* ItemQuantityDelegate.swift */; };
 		FF95EBD42274EC6C009EB033 /* BannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF95EBD32274EC6C009EB033 /* BannerCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 		FF54A765226A923C0046B0F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF54A76C226A94D70046B0F5 /* CheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
 		FF54A76E226A9EC70046B0F5 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
+		FF56C3E922811C1B00D58BBF /* ItemQuantityDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemQuantityDelegate.swift; sourceTree = "<group>"; };
 		FF95EBD32274EC6C009EB033 /* BannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -88,6 +90,7 @@
 				FF07E293227264FF004E40BB /* DataModelManager.swift */,
 				FF2661DA22752C9000CD356E /* ItemTableViewCell.swift */,
 				FF1CA6B22277C6B300C51744 /* ItemCollectionViewCell.swift */,
+				FF56C3E922811C1B00D58BBF /* ItemQuantityDelegate.swift */,
 			);
 			path = ShoppingApp;
 			sourceTree = "<group>";
@@ -184,6 +187,7 @@
 				FF07E292227264EF004E40BB /* ShoppingCart.swift in Sources */,
 				FF95EBD42274EC6C009EB033 /* BannerCollectionViewCell.swift in Sources */,
 				FF1CA6B32277C6B300C51744 /* ItemCollectionViewCell.swift in Sources */,
+				FF56C3EA22811C1B00D58BBF /* ItemQuantityDelegate.swift in Sources */,
 				FF2661DB22752C9000CD356E /* ItemTableViewCell.swift in Sources */,
 				FF07E294227264FF004E40BB /* DataModelManager.swift in Sources */,
 			);
