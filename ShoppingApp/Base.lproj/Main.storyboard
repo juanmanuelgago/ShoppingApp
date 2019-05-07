@@ -252,7 +252,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="PN2-8S-xQB">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="522"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="527"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="TQL-KC-yja">
                                     <size key="itemSize" width="175" height="243"/>
@@ -337,13 +337,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UWB-Dt-rbl">
-                                <rect key="frame" x="106.33333333333333" y="542" width="243.66666666666669" height="48"/>
+                                <rect key="frame" x="106.33333333333333" y="547" width="243.66666666666669" height="48"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
                                 <color key="textColor" red="0.16862745098039217" green="0.15294117647058825" blue="0.37254901960784315" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AXb-nM-iL1" userLabel="Total Label">
-                                <rect key="frame" x="24.999999999999993" y="542" width="81.333333333333314" height="48"/>
+                                <rect key="frame" x="24.999999999999993" y="547" width="81.333333333333314" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <color key="textColor" red="0.2196078431372549" green="0.22745098039215686" blue="0.32941176470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -353,7 +353,7 @@
                         <constraints>
                             <constraint firstItem="PN2-8S-xQB" firstAttribute="top" secondItem="xCe-Y7-Th2" secondAttribute="top" id="4TX-3D-zR6"/>
                             <constraint firstItem="PN2-8S-xQB" firstAttribute="trailing" secondItem="xCe-Y7-Th2" secondAttribute="trailing" id="6Fl-88-umu"/>
-                            <constraint firstItem="HJZ-T3-Ndk" firstAttribute="top" secondItem="UWB-Dt-rbl" secondAttribute="bottom" constant="25" id="D8o-h6-Qsm"/>
+                            <constraint firstItem="HJZ-T3-Ndk" firstAttribute="top" secondItem="UWB-Dt-rbl" secondAttribute="bottom" constant="20" id="D8o-h6-Qsm"/>
                             <constraint firstItem="UWB-Dt-rbl" firstAttribute="trailing" secondItem="HJZ-T3-Ndk" secondAttribute="trailing" id="Ex9-0n-bEn"/>
                             <constraint firstItem="UWB-Dt-rbl" firstAttribute="bottom" secondItem="AXb-nM-iL1" secondAttribute="bottom" id="Khz-8F-Owf"/>
                             <constraint firstItem="PN2-8S-xQB" firstAttribute="leading" secondItem="xCe-Y7-Th2" secondAttribute="leading" id="Xsl-ng-fP7"/>

@@ -119,7 +119,7 @@ extension CheckoutViewController: UICollectionViewDelegate, UICollectionViewData
 
 extension CheckoutViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (collectionView.bounds.width/2) - 7.5, height: collectionView.bounds.height/2)
+        return CGSize(width: (collectionView.frame.width/2) - 7.5, height: (collectionView.frame.height/2) + 20)
     }
 }
 
