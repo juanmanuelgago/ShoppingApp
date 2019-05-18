@@ -7,6 +7,13 @@
 //
 
 import UIKit
+import Foundation
+
+protocol ItemQuantityDelegate {
+    // Protocol to connect the actions in the cells with the ShoppingBag instance in the controllers.
+    func didIncreaseItemQuantity(cell: UITableViewCell) -> String
+    func didDecreaseItemQuantity(cell: UITableViewCell) -> String
+}
 
 class ItemTableViewCell: UITableViewCell {
 
