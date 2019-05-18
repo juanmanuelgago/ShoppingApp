@@ -18,8 +18,6 @@ class ItemTableViewCell: UITableViewCell {
     @IBOutlet weak var subtractOneButton: UIButton!
     @IBOutlet weak var addOneButton: UIButton!
     
-    // The item associated to this cell is set in this variable.
-    var itemCell: Item!
     // Allows the communication between the actions of this cell with the instance of the model in the view controller.
     var itemDelegate: ItemQuantityDelegate?
     
@@ -30,15 +28,13 @@ class ItemTableViewCell: UITableViewCell {
     }
     
     // Assign the item information to the different outlets of the cell.
-    // The item is set to itemCell
     // Uses the delegate to retrieve the quantity of the item in the instance of the view controller.
-    func setItem(item: Item) {
+    func setItemData(item: Item, quantity: Int) {
         if let smallImageItem = item.smallImage as UIImage?, let _ = item.bigImage as UIImage? {
-            itemCell = item
             nameLabel.text = item.name
             priceLabel.text = "$" + String(item.price)
             itemImage.image = smallImageItem
-            quantityLabel.text = itemDelegate?.getItemQuantity(item: item)
+            quantityLabel.text = String(quantity)
         }
         handleButtons()
     }
@@ -83,7 +79,7 @@ class ItemTableViewCell: UITableViewCell {
     // Notify the increase of the item in the cell.
     // Communicates through the delegate, so the shopping bag is updated as well.
     @IBAction func increaseItemAction(_ sender: Any) {
-        let newQuantityOfItem = itemDelegate?.didIncreaseItemQuantity(item: itemCell)
+        let newQuantityOfItem = itemDelegate?.didIncreaseItemQuantity(cell: self)
         quantityLabel.text = newQuantityOfItem
         handleButtons()
     }
@@ -91,7 +87,7 @@ class ItemTableViewCell: UITableViewCell {
     // Notify the decrease of the item in the cell.
     // Communicates through the delegate, so the shopping bag is updated as well.
     @IBAction func decreaseItemAction(_ sender: Any) {
-        let newQuantityOfItem = itemDelegate?.didDecreaseItemQuantity(item: itemCell)
+        let newQuantityOfItem = itemDelegate?.didDecreaseItemQuantity(cell: self)
         quantityLabel.text = newQuantityOfItem
         handleButtons()
     }

@@ -125,27 +125,39 @@ UICollectionViewDataSource, UIScrollViewDelegate, UICollectionViewDelegateFlowLa
 }
 
 extension ShoppingBagViewController: ItemQuantityDelegate {
+    
     // When the cell of the table executes an action of the protocol, the view controller updates the Shopping Cart declared.
     // Returns the new value after being set.
-
-    // Calls the shopping bag instance to increase one, returns the new value.
-    func didIncreaseItemQuantity(item: Item) -> String {
-        let newValue = shoppingCart.addItem(itemToAdd: item)
-        return String(newValue)
+    
+    func didIncreaseItemQuantity(cell: UITableViewCell) -> String {
+        var newValue = "0"
+        var item: Item
+        if let cellLocation = itemTableView.indexPath(for: cell) as IndexPath? {
+            if searching {
+                item = filteredItems[cellLocation.section][cellLocation.row]
+            } else {
+                item = items[cellLocation.section][cellLocation.row]
+            }
+            let result = shoppingCart.addItem(itemToAdd: item)
+            newValue = String(result)
+        }
+        return newValue
     }
     
-    // Calls the shopping bag instance to decrease one, returns the new value.
-    func didDecreaseItemQuantity(item: Item) -> String {
-        let newValue = shoppingCart.subtractItem(itemToSubtract: item)
-        return String(newValue)
+    func didDecreaseItemQuantity(cell: UITableViewCell) -> String {
+        var newValue = "0"
+        var item: Item
+        if let cellLocation = itemTableView.indexPath(for: cell) as IndexPath? {
+            if searching {
+                item = filteredItems[cellLocation.section][cellLocation.row]
+            } else {
+                item = items[cellLocation.section][cellLocation.row]
+            }
+            let result = shoppingCart.subtractItem(itemToSubtract: item)
+            newValue = String(result)
+        }
+        return newValue
     }
-    
-    // Calls the shopping bag instance to get the value of the item specified.
-    func getItemQuantity(item: Item) -> String {
-        let actualValue = shoppingCart.getItemQuantity(itemToGet: item)
-        return  String(actualValue)
-    }
-    
 }
 
 extension ShoppingBagViewController: UITableViewDelegate, UITableViewDataSource {
@@ -168,7 +180,8 @@ extension ShoppingBagViewController: UITableViewDelegate, UITableViewDataSource 
             itemToPutInCell = items[indexPath.section][indexPath.row]
         }
         cell.itemDelegate = self // The view controller is available to detect messages from the cell.
-        cell.setItem(item: itemToPutInCell)
+        let quantityOfItem = shoppingCart.getItemQuantity(itemToGet: itemToPutInCell)
+        cell.setItemData(item: itemToPutInCell, quantity: quantityOfItem)
         return cell
     }
     

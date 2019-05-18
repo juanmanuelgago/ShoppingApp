@@ -15,12 +15,6 @@ class ItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var quantityLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     
-    // The item associated to this cell is set in this variable.
-    var itemCell: Item!
-    // Allows the communication between the actions of this cell with the instance of the model in the view controller.
-    // Only call needed from this delegate is when the item is being set.
-    var itemDelegate: ItemQuantityDelegate?
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         styleImage()
@@ -33,17 +27,12 @@ class ItemCollectionViewCell: UICollectionViewCell {
     }
     
     // Assign the item information to the different outlets of the cell.
-    // The item is set to itemCell
-    // Uses the delegate to retrieve the quantity of the item in the instance of the view controller.
-    func setItem(item: Item) {
+    func setItemData(item: Item, quantity: Int) {
         if let _ = item.smallImage as UIImage?, let bigImageItem = item.bigImage as UIImage? {
-            itemCell = item
             nameLabel.text = item.name
             priceLabel.text = "$" + String(item.price)
             itemImage.image = bigImageItem
-            if let quantityLabelText = itemDelegate?.getItemQuantity(item: item) as String? {
-                quantityLabel.text = quantityLabelText + " units"
-            }
+            quantityLabel.text = String(quantity) + " units"
         }
     }
     

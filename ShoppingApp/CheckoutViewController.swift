@@ -76,8 +76,8 @@ extension CheckoutViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let identifier = "ItemCell"
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! ItemCollectionViewCell
-        cell.itemDelegate = self // Creates the connection between this view controller, and the actions and changes in the item of the collection cell.
-        cell.setItem(item: items[indexPath.row])
+        let quantityOfItem = shoppingCart.getItemQuantity(itemToGet: items[indexPath.row])
+        cell.setItemData(item: items[indexPath.row], quantity: quantityOfItem)
         return cell
     }
     
@@ -121,30 +121,6 @@ extension CheckoutViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: (collectionView.frame.width/2) - 7.5, height: (collectionView.frame.height/2) + 20)
     }
-}
-
-extension CheckoutViewController: ItemQuantityDelegate {
-    
-    // Calls the shopping bag instance to increase one, returns the new value. In Add / Subtract methods, refresh the final price label calling the setTotalPriceLabel method.
-    func didIncreaseItemQuantity(item: Item) -> String {
-        let newValue = shoppingCart.addItem(itemToAdd: item)
-        setTotalPriceLabel()
-        return String(newValue)
-    }
-    
-    // Calls the shopping bag instance to decrease one, returns the new value.
-    func didDecreaseItemQuantity(item: Item) -> String {
-        let newValue = shoppingCart.subtractItem(itemToSubtract: item)
-        setTotalPriceLabel()
-        return String(newValue)
-    }
-    
-    // Retrieves the value of the item specified, for the cell.
-    func getItemQuantity(item: Item) -> String {
-        let actualValue = shoppingCart.getItemQuantity(itemToGet: item)
-        return  String(actualValue)
-    }
-
 }
 
 extension CheckoutViewController: UIPickerViewDelegate, UIPickerViewDataSource {
