@@ -22,6 +22,7 @@
 		FF54A76D226A94D70046B0F5 /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF54A76C226A94D70046B0F5 /* CheckoutViewController.swift */; };
 		FF54A76F226A9EC70046B0F5 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF54A76E226A9EC70046B0F5 /* MainNavigationController.swift */; };
 		FF95EBD42274EC6C009EB033 /* BannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF95EBD32274EC6C009EB033 /* BannerCollectionViewCell.swift */; };
+		FFD3F9042294C49F00615A6F /* Purchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD3F9032294C49F00615A6F /* Purchase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		FF54A76C226A94D70046B0F5 /* CheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
 		FF54A76E226A9EC70046B0F5 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		FF95EBD32274EC6C009EB033 /* BannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCollectionViewCell.swift; sourceTree = "<group>"; };
+		FFD3F9032294C49F00615A6F /* Purchase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Purchase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 				FF07E293227264FF004E40BB /* DataModelManager.swift */,
 				FF2661DA22752C9000CD356E /* ItemTableViewCell.swift */,
 				FF1CA6B22277C6B300C51744 /* ItemCollectionViewCell.swift */,
+				FFD3F9032294C49F00615A6F /* Purchase.swift */,
 			);
 			path = ShoppingApp;
 			sourceTree = "<group>";
@@ -185,6 +188,7 @@
 				FF95EBD42274EC6C009EB033 /* BannerCollectionViewCell.swift in Sources */,
 				FF1CA6B32277C6B300C51744 /* ItemCollectionViewCell.swift in Sources */,
 				FF2661DB22752C9000CD356E /* ItemTableViewCell.swift in Sources */,
+				FFD3F9042294C49F00615A6F /* Purchase.swift in Sources */,
 				FF07E294227264FF004E40BB /* DataModelManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
