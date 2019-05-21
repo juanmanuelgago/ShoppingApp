@@ -19,22 +19,19 @@ class DataModelManager {
     func getDataForShoppingCart() -> [[Item]] {
         
         let avocadoImage = UIImage(named: "Avocado")!
-        let avocadoItem = Item(name: "Avocado", price: 10, category: ItemCategory.veggie, smallImage: avocadoImage, bigImage: avocadoImage)
+        let avocadoItem = Item(id: 1, name: "Avocado", price: 10.0, category: ItemCategory.veggie, image: avocadoImage)
         
         let cucumberImage = UIImage(named: "Cucumber")!
-        let cucumberItem = Item(name: "Cucumber", price: 10, category: ItemCategory.veggie, smallImage: cucumberImage, bigImage: cucumberImage)
+        let cucumberItem = Item(id: 2, name: "Cucumber", price: 10.0, category: ItemCategory.veggie, image: cucumberImage)
 
-        let grapefruitSmallImage = UIImage(named: "Grapefruit")!
-        let grapefruitBigImage = UIImage(named: "Grapefruit-2")!
-        let grapefruitItem = Item(name: "Grapefruit", price: 10, category: ItemCategory.fruit, smallImage: grapefruitSmallImage, bigImage: grapefruitBigImage)
+        let grapefruitImage = UIImage(named: "Grapefruit")!
+        let grapefruitItem = Item(id: 3, name: "Grapefruit", price: 10.0, category: ItemCategory.fruit, image: grapefruitImage)
         
-        let kiwiSmallImage = UIImage(named: "Kiwi")!
-        let kiwiBigImage = UIImage(named: "Kiwi-2")!
-        let kiwiItem = Item(name: "Kiwi", price: 10, category: ItemCategory.fruit, smallImage: kiwiSmallImage, bigImage: kiwiBigImage)
+        let kiwiImage = UIImage(named: "Kiwi")!
+        let kiwiItem = Item(id: 4, name: "Kiwi", price: 10.0, category: ItemCategory.fruit, image: kiwiImage)
         
-        let watermelonSmallImage = UIImage(named: "Watermelon")!
-        let watermelonBigImage = UIImage(named: "Watermelon")!
-        let watermelonItem = Item(name: "Watermelon", price: 10, category: ItemCategory.fruit, smallImage: watermelonSmallImage, bigImage: watermelonBigImage)
+        let watermelonImage = UIImage(named: "Watermelon")!
+        let watermelonItem = Item(id: 5, name: "Watermelon", price: 10.0, category: ItemCategory.fruit, image: watermelonImage)
 
         let fruitArray = [grapefruitItem, kiwiItem, watermelonItem]
         let veggieArray = [avocadoItem, cucumberItem]

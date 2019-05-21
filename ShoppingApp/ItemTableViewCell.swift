@@ -37,10 +37,10 @@ class ItemTableViewCell: UITableViewCell {
     // Assign the item information to the different outlets of the cell.
     // Uses the delegate to retrieve the quantity of the item in the instance of the view controller.
     func setItemData(item: Item, quantity: Int) {
-        if let smallImageItem = item.smallImage as UIImage?, let _ = item.bigImage as UIImage? {
+        if let image = item.image as UIImage? {
             nameLabel.text = item.name
             priceLabel.text = "$" + String(item.price)
-            itemImage.image = smallImageItem
+            itemImage.image = image
             quantityLabel.text = String(quantity)
         }
         handleButtons()

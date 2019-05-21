@@ -52,10 +52,10 @@ class ShoppingCart {
     }
 
     // Method to calculate the final price after checkout.
-    func getFinalPrice() -> Int {
-        var finalPrice = 0
+    func getFinalPrice() -> Double {
+        var finalPrice = 0.0
         for (item, quantity) in itemQuantity {
-            let priceForItem = item.price * quantity
+            let priceForItem = item.price * Double(quantity)
             finalPrice += priceForItem
         }
         return finalPrice

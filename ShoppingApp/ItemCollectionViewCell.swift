@@ -28,12 +28,11 @@ class ItemCollectionViewCell: UICollectionViewCell {
     
     // Assign the item information to the different outlets of the cell.
     func setItemData(item: Item, quantity: Int) {
-        if let _ = item.smallImage as UIImage?, let bigImageItem = item.bigImage as UIImage? {
+        if let image = item.image as UIImage? {
             nameLabel.text = item.name
             priceLabel.text = "$" + String(item.price)
-            itemImage.image = bigImageItem
+            itemImage.image = image
             quantityLabel.text = String(quantity) + " units"
         }
     }
-    
 }

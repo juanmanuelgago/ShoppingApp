@@ -11,18 +11,18 @@ import UIKit
 
 class Item {
     
+    let id: Int
     let name: String
-    let price: Int
+    let price: Double
     let category: ItemCategory
-    let smallImage: UIImage?
-    let bigImage: UIImage?
+    let image: UIImage?
     
-    init(name: String, price: Int, category: ItemCategory, smallImage: UIImage?, bigImage: UIImage?) {
+    init(id: Int, name: String, price: Double, category: ItemCategory, image: UIImage?) {
+        self.id = id
         self.name = name
         self.price = price
         self.category = category
-        self.smallImage = smallImage
-        self.bigImage = bigImage
+        self.image = image
     }
 }
 
@@ -30,10 +30,10 @@ class Item {
 // The static method establishes how to consider that two objects of the Item class are equal.
 extension Item: Hashable {
     var hashValue: Int {
-        return name.hashValue ^ price.hashValue
+        return id.hashValue ^ name.hashValue ^ price.hashValue
     }
     
     static func ==(lhs: Item, rhs: Item) -> Bool {
-        return lhs.name == rhs.name
+        return lhs.id == rhs.id
     }
 }
