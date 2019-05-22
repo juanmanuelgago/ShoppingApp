@@ -23,6 +23,8 @@
 		FF54A76F226A9EC70046B0F5 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF54A76E226A9EC70046B0F5 /* MainNavigationController.swift */; };
 		FF95EBD42274EC6C009EB033 /* BannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF95EBD32274EC6C009EB033 /* BannerCollectionViewCell.swift */; };
 		FFD3F9042294C49F00615A6F /* Purchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD3F9032294C49F00615A6F /* Purchase.swift */; };
+		FFD3F9072294CABE00615A6F /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD3F9052294CABE00615A6F /* AuthenticationManager.swift */; };
+		FFD3F9082294CABE00615A6F /* AuthenticationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD3F9062294CABE00615A6F /* AuthenticationResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		FF54A76E226A9EC70046B0F5 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		FF95EBD32274EC6C009EB033 /* BannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCollectionViewCell.swift; sourceTree = "<group>"; };
 		FFD3F9032294C49F00615A6F /* Purchase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Purchase.swift; sourceTree = "<group>"; };
+		FFD3F9052294CABE00615A6F /* AuthenticationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
+		FFD3F9062294CABE00615A6F /* AuthenticationResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +95,8 @@
 				FF2661DA22752C9000CD356E /* ItemTableViewCell.swift */,
 				FF1CA6B22277C6B300C51744 /* ItemCollectionViewCell.swift */,
 				FFD3F9032294C49F00615A6F /* Purchase.swift */,
+				FFD3F9052294CABE00615A6F /* AuthenticationManager.swift */,
+				FFD3F9062294CABE00615A6F /* AuthenticationResponse.swift */,
 			);
 			path = ShoppingApp;
 			sourceTree = "<group>";
@@ -186,9 +192,11 @@
 				FF54A75A226A923C0046B0F5 /* AppDelegate.swift in Sources */,
 				FF07E292227264EF004E40BB /* ShoppingCart.swift in Sources */,
 				FF95EBD42274EC6C009EB033 /* BannerCollectionViewCell.swift in Sources */,
+				FFD3F9072294CABE00615A6F /* AuthenticationManager.swift in Sources */,
 				FF1CA6B32277C6B300C51744 /* ItemCollectionViewCell.swift in Sources */,
 				FF2661DB22752C9000CD356E /* ItemTableViewCell.swift in Sources */,
 				FFD3F9042294C49F00615A6F /* Purchase.swift in Sources */,
+				FFD3F9082294CABE00615A6F /* AuthenticationResponse.swift in Sources */,
 				FF07E294227264FF004E40BB /* DataModelManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
