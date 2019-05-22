@@ -11,4 +11,5 @@ import Foundation
 enum ItemCategory: String {
     case fruit = "Fruits"
     case veggie = "Veggies"
+    case dairy = "Dairy"
 }
