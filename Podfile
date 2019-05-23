@@ -6,7 +6,7 @@ target 'ShoppingApp' do
   use_frameworks!
 
   # Pods for ShoppingApp
-  pod 'AlamofireObjectMapper', '~> 5.2'
+  pod 'AlamofireObjectMapper', '5.2'
   pod 'Kingfisher', '4.9'
 
 end

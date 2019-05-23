@@ -39,25 +39,6 @@ class DataModelManager {
         return [fruitArray, veggieArray]
     }
     
-    func getDataForBanner() -> [ItemBanner] {
-        
-        let bananaBannerImage = UIImage(named: "Banner-1")!
-        let bananaBanner = ItemBanner(title: "Brazilian Bananas", description: "Product of the Month", bannerImage: bananaBannerImage)
-        
-        let grapefruitBannerImage = UIImage(named: "Banner-2")!
-        let grapefruitBanner = ItemBanner(title: "Tropical Grapefruit", description: "Product of the Month", bannerImage: grapefruitBannerImage)
-
-        let cucumberBannerImage = UIImage(named: "Banner-3")!
-        let cucumberBanner = ItemBanner(title: "Asian Cucumber", description: "Product of the Month", bannerImage: cucumberBannerImage)
-        
-        let kiwiBannerImage = UIImage(named: "Banner-4")!
-        let kiwiBanner = ItemBanner(title: "Australian Kiwis", description: "Product of the Month", bannerImage: kiwiBannerImage)
-        
-        let arrayItems = [bananaBanner, grapefruitBanner, cucumberBanner, kiwiBanner]
-        return arrayItems
-        
-    }
-    
     func getDataForCategories() -> [ItemCategory] {
         
         return [ItemCategory.fruit, ItemCategory.veggie]

@@ -13,6 +13,7 @@
 		FF07E292227264EF004E40BB /* ShoppingCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF07E291227264EF004E40BB /* ShoppingCart.swift */; };
 		FF07E294227264FF004E40BB /* DataModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF07E293227264FF004E40BB /* DataModelManager.swift */; };
 		FF1CA6B32277C6B300C51744 /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1CA6B22277C6B300C51744 /* ItemCollectionViewCell.swift */; };
+		FF2012062295F3FD00DC793C /* RemoteServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2012052295F3FD00DC793C /* RemoteServiceManager.swift */; };
 		FF2661DB22752C9000CD356E /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2661DA22752C9000CD356E /* ItemTableViewCell.swift */; };
 		FF286EDB2272912A0056CB44 /* ItemBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF286EDA2272912A0056CB44 /* ItemBanner.swift */; };
 		FF54A75A226A923C0046B0F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF54A759226A923C0046B0F5 /* AppDelegate.swift */; };
@@ -37,6 +38,7 @@
 		FF07E291227264EF004E40BB /* ShoppingCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCart.swift; sourceTree = "<group>"; };
 		FF07E293227264FF004E40BB /* DataModelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelManager.swift; sourceTree = "<group>"; };
 		FF1CA6B22277C6B300C51744 /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		FF2012052295F3FD00DC793C /* RemoteServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteServiceManager.swift; sourceTree = "<group>"; };
 		FF2661DA22752C9000CD356E /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 		FF286EDA2272912A0056CB44 /* ItemBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemBanner.swift; sourceTree = "<group>"; };
 		FF54A756226A923C0046B0F5 /* ShoppingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShoppingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,7 +82,6 @@
 				E6A06194F9677213BDF3CEF1 /* Pods-ShoppingApp.debug.xcconfig */,
 				51E19941652FA54797065A85 /* Pods-ShoppingApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -122,6 +123,7 @@
 				FFD3F9032294C49F00615A6F /* Purchase.swift */,
 				FFD3F9052294CABE00615A6F /* AuthenticationManager.swift */,
 				FFD3F9062294CABE00615A6F /* AuthenticationResponse.swift */,
+				FF2012052295F3FD00DC793C /* RemoteServiceManager.swift */,
 			);
 			path = ShoppingApp;
 			sourceTree = "<group>";
@@ -147,7 +149,7 @@
 				FF54A752226A923C0046B0F5 /* Sources */,
 				FF54A753226A923C0046B0F5 /* Frameworks */,
 				FF54A754226A923C0046B0F5 /* Resources */,
-				756AAEBA9008D01CC4F1FED5 /* [CP] Embed Pods Frameworks */,
+				92304EED361A0F3C5EA3FCEA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -206,12 +208,10 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		756AAEBA9008D01CC4F1FED5 /* [CP] Embed Pods Frameworks */ = {
+		92304EED361A0F3C5EA3FCEA /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ShoppingApp/Pods-ShoppingApp-frameworks.sh",
@@ -221,8 +221,6 @@
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
@@ -239,15 +237,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-ShoppingApp-checkManifestLockResult.txt",
 			);
@@ -276,6 +270,7 @@
 				FF1CA6B32277C6B300C51744 /* ItemCollectionViewCell.swift in Sources */,
 				FF2661DB22752C9000CD356E /* ItemTableViewCell.swift in Sources */,
 				FFD3F9042294C49F00615A6F /* Purchase.swift in Sources */,
+				FF2012062295F3FD00DC793C /* RemoteServiceManager.swift in Sources */,
 				FFD3F9082294CABE00615A6F /* AuthenticationResponse.swift in Sources */,
 				FF07E294227264FF004E40BB /* DataModelManager.swift in Sources */,
 			);

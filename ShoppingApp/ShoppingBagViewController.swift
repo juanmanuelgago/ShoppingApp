@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ShoppingBagViewController: UIViewController {
 
@@ -34,6 +35,7 @@ class ShoppingBagViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         // If the shopping cart changed a certain value, the table must refresh its cells.
+        initData()
         itemTableView.reloadData()
     }
     
@@ -47,6 +49,31 @@ class ShoppingBagViewController: UIViewController {
         destinyViewController.shoppingCart = self.shoppingCart
     }
     
+    func initData() {
+        // Add data to the banner array for the collection view.
+        RemoteServiceManager.shared.getBanners { (arrayBanners, error) in
+            if let error = error as Error? {
+                print("llego un error")
+                print(error)
+            } else {
+                self.banners = []
+                if let arrayBanners = arrayBanners as [ItemBanner]? {
+                    for itemBanner in arrayBanners {
+                        if let itemBanner = itemBanner as ItemBanner? {
+                            self.banners.append(itemBanner)
+                        }
+                    }
+                    self.bannerCollectionView.reloadData()
+                }
+                
+            }
+        }
+        
+        // TODO: Call getItems() Method from the RemoteServiceManager
+        // TODO: And the categories?
+        
+    }
+    
     // Retrieves the initial data for the app.
     func initialConfiguration() {
         let data = DataModelManager.shared.getDataForShoppingCart()
@@ -54,7 +81,6 @@ class ShoppingBagViewController: UIViewController {
             shoppingCart.createItems(items: dataArray)
         }
         items = data
-        banners = DataModelManager.shared.getDataForBanner()
         categories = DataModelManager.shared.getDataForCategories()
     }
     
@@ -111,9 +137,11 @@ UICollectionViewDataSource, UIScrollViewDelegate, UICollectionViewDelegateFlowLa
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let identifier = "BannerCell"
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! BannerCollectionViewCell
-        cell.bannerImageView.image = banners[indexPath.row].bannerImage
-        cell.titleLabel.text = banners[indexPath.row].title
-        cell.descriptionLabel.text = banners[indexPath.row].description
+        if let url = banners[indexPath.row].photoUrl as String?, let name = banners[indexPath.row].name as String?, let description = banners[indexPath.row].description as String? {
+            cell.bannerImageView.kf.setImage(with: URL(string: url))
+            cell.titleLabel.text = name
+            cell.descriptionLabel.text = description
+        }
         return cell
     }
     

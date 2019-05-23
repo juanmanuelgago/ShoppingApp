@@ -8,16 +8,20 @@
 
 import Foundation
 import UIKit
+import ObjectMapper
 
-class ItemBanner {
+class ItemBanner: Mappable {
     
-    let title: String
-    let description: String
-    let bannerImage: UIImage?
+    var name: String?
+    var description: String?
+    var photoUrl: String?
     
-    init(title: String, description: String, bannerImage: UIImage) {
-        self.title = title
-        self.description = description
-        self.bannerImage = bannerImage
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        name <- map["name"]
+        description <- map["description"]
+        photoUrl <- map["photoUrl"]        
     }
+    
 }

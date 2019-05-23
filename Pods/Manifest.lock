@@ -7,7 +7,7 @@ PODS:
   - ObjectMapper (3.4.2)
 
 DEPENDENCIES:
-  - AlamofireObjectMapper (~> 5.2)
+  - AlamofireObjectMapper (= 5.2)
   - Kingfisher (= 4.9)
 
 SPEC REPOS:
@@ -23,6 +23,6 @@ SPEC CHECKSUMS:
   Kingfisher: 64539b51826b778206daa6ed815d12653caa69dd
   ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
 
-PODFILE CHECKSUM: a61b0ec7ed7fc7229696c9d53b4840bace33118e
+PODFILE CHECKSUM: bd0fc46eb9343d6447cd8afffd2ceab9f6de23b3
 
 COCOAPODS: 1.6.1
