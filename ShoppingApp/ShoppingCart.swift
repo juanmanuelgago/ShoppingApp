@@ -12,6 +12,7 @@ class ShoppingCart {
     
     // Dictionary to handle the relationship item and quantity.s
     var itemQuantity: [Item: Int] = [:]
+    var initialized = false
     
     init() { }
     
@@ -42,6 +43,7 @@ class ShoppingCart {
         for item in items {
             itemQuantity[item] = 0
         }
+        initialized = true
     }
     
     // Reinitializes dictionary to zero items.
@@ -55,8 +57,10 @@ class ShoppingCart {
     func getFinalPrice() -> Double {
         var finalPrice = 0.0
         for (item, quantity) in itemQuantity {
-            let priceForItem = item.price * Double(quantity)
-            finalPrice += priceForItem
+            if let price = item.price as Double? {
+                let priceForItem = price * Double(quantity)
+                finalPrice += priceForItem
+            }
         }
         return finalPrice
     }

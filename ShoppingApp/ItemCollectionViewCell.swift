@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ItemCollectionViewCell: UICollectionViewCell {
     
@@ -28,10 +29,16 @@ class ItemCollectionViewCell: UICollectionViewCell {
     
     // Assign the item information to the different outlets of the cell.
     func setItemData(item: Item, quantity: Int) {
-        if let image = item.image as UIImage? {
-            nameLabel.text = item.name
-            priceLabel.text = "$" + String(item.price)
-            itemImage.image = image
+        if let name = item.name as String?, let price = item.price as Double? {
+            if let photoUrl = item.photoUrl as String? {
+                let url = URL(string: photoUrl)
+                itemImage.kf.setImage(with: url)
+            } else {
+                let notFoundImage = UIImage(named: "no-photo")
+                itemImage.image = notFoundImage
+            }
+            nameLabel.text = name
+            priceLabel.text = "$" + String(price)
             quantityLabel.text = String(quantity) + " units"
         }
     }

@@ -8,21 +8,34 @@
 
 import Foundation
 import UIKit
+import ObjectMapper
 
-class Item {
+class Item: Mappable {
     
-    let id: Int
-    let name: String
-    let price: Double
-    let category: ItemCategory
-    let image: UIImage?
+    // Force unwrap the id. App to crash if values in this property are inconsistent.
+    var id: Int!
+    var name: String?
+    var price: Double?
+    var category: ItemCategory?
+    var photoUrl: String?
     
-    init(id: Int, name: String, price: Double, category: ItemCategory, image: UIImage?) {
-        self.id = id
-        self.name = name
-        self.price = price
-        self.category = category
-        self.image = image
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        id <- map["id"]
+        name <- map["name"]
+        price <- (map["price"])
+        category <- (map["category"], EnumTransform<ItemCategory>())
+        photoUrl <- map["photoUrl"]
+        setRoundedPrice()
+    }
+    
+    func setRoundedPrice() {
+        if let varPrice = price as Double? {
+            let fullPrice = varPrice
+            let roundedPrice = Double(round(10 * fullPrice) / 10)
+            price = roundedPrice
+        }
     }
 }
 
@@ -30,7 +43,11 @@ class Item {
 // The static method establishes how to consider that two objects of the Item class are equal.
 extension Item: Hashable {
     var hashValue: Int {
-        return id.hashValue ^ name.hashValue ^ price.hashValue
+        if let name = name as String?, let price = price as Double? {
+            return id.hashValue ^ name.hashValue ^ price.hashValue
+        } else {
+            return id.hashValue // Value forced.
+        }
     }
     
     static func ==(lhs: Item, rhs: Item) -> Bool {

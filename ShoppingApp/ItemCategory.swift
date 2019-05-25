@@ -9,7 +9,17 @@
 import Foundation
 
 enum ItemCategory: String {
-    case fruit = "Fruits"
-    case veggie = "Veggies"
-    case dairy = "Dairy"
+    case fruit = "fruits"
+    case veggie = "veggies"
+    case dairy = "dairy"
+}
+
+extension String {
+    func capitalizingFirstLetter() -> String {
+        return prefix(1).capitalized + dropFirst()
+    }
+    
+    mutating func capitalizeFirstLetter() {
+        self = self.capitalizingFirstLetter()
+    }
 }

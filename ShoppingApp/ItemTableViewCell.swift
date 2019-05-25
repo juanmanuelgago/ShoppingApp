@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import Kingfisher
 
 protocol ItemQuantityDelegate {
     // Protocol to connect the actions in the cells with the ShoppingBag instance in the controllers.
@@ -37,10 +38,17 @@ class ItemTableViewCell: UITableViewCell {
     // Assign the item information to the different outlets of the cell.
     // Uses the delegate to retrieve the quantity of the item in the instance of the view controller.
     func setItemData(item: Item, quantity: Int) {
-        if let image = item.image as UIImage? {
-            nameLabel.text = item.name
-            priceLabel.text = "$" + String(item.price)
-            itemImage.image = image
+        if let name = item.name as String?, let price = item.price as Double? {
+            if let photoUrl = item.photoUrl as String? {
+                let url = URL(string: photoUrl)
+                itemImage.kf.setImage(with: url)
+                
+            } else {
+                let notFoundImage = UIImage(named: "no-photo")
+                itemImage.image = notFoundImage
+            }
+            nameLabel.text = name
+            priceLabel.text = "$" + String(price)
             quantityLabel.text = String(quantity)
         }
         handleButtons()

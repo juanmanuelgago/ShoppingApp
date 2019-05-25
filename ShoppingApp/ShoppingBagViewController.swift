@@ -28,7 +28,6 @@ class ShoppingBagViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        initialConfiguration()
         styleSearchBar()
     }
     
@@ -53,7 +52,7 @@ class ShoppingBagViewController: UIViewController {
         // Add data to the banner array for the collection view.
         RemoteServiceManager.shared.getBanners { (arrayBanners, error) in
             if let error = error as Error? {
-                print("llego un error")
+                print("llego un error en get banners")
                 print(error)
             } else {
                 self.banners = []
@@ -64,24 +63,48 @@ class ShoppingBagViewController: UIViewController {
                         }
                     }
                     self.bannerCollectionView.reloadData()
-                }
-                
+                }                
             }
         }
         
-        // TODO: Call getItems() Method from the RemoteServiceManager
-        // TODO: And the categories?
-        
-    }
-    
-    // Retrieves the initial data for the app.
-    func initialConfiguration() {
-        let data = DataModelManager.shared.getDataForShoppingCart()
-        for dataArray in data {
-            shoppingCart.createItems(items: dataArray)
+        // Add data to the items array for the table view.
+        RemoteServiceManager.shared.getItems { (arrayItems, error) in
+            if let error = error as Error? {
+                print("llego un error en get items")
+                print(error)
+            } else {
+                self.items = []
+                if let arrayItems = arrayItems as [Item]? {
+                    print(arrayItems.count)
+                    var dairyItems: [Item] = []
+                    var veggiesItems: [Item] = []
+                    var fruitsItems: [Item] = []
+                    for item in arrayItems {
+                        if let item = item as Item? {
+                            if let category = item.category as ItemCategory? {
+                                switch category {
+                                    case .dairy:
+                                        dairyItems.append(item)
+                                    case .veggie:
+                                        veggiesItems.append(item)
+                                    case .fruit:
+                                        fruitsItems.append(item)
+                                }
+                            }
+                        }
+                    }
+                    self.items = [dairyItems, fruitsItems, veggiesItems]
+                    if !self.shoppingCart.initialized {
+                        for arrayItems in self.items {
+                            self.shoppingCart.createItems(items: arrayItems)
+                        }
+                    }
+                    self.categories = [ItemCategory.dairy, ItemCategory.fruit, ItemCategory.veggie]
+                    self.itemTableView.reloadData()
+                }
+            }
         }
-        items = data
-        categories = DataModelManager.shared.getDataForCategories()
+        
     }
     
     // Add style to the search bar in the view.
@@ -214,7 +237,7 @@ extension ShoppingBagViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return categories[section].rawValue
+        return categories[section].rawValue.capitalizingFirstLetter()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -234,7 +257,11 @@ extension ShoppingBagViewController: UISearchBarDelegate {
             for i in 0...categories - 1 {
                 var filteredItemsForCategory: [Item] = []
                 filteredItemsForCategory = items[i].filter({ (item: Item) -> Bool in
-                    return item.name.lowercased().contains(searchText.lowercased())
+                    if let name = item.name?.lowercased() as String? {
+                        return name.contains(searchText.lowercased())
+                    } else {
+                        return false
+                    }
                 })
                 newFilteredItems.append(filteredItemsForCategory)
             }

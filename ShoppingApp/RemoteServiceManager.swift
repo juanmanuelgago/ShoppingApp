@@ -18,6 +18,21 @@ class RemoteServiceManager {
     private init() { }
     
     func getItems(onCompletion: @escaping ([Item]?, Error?) -> Void) {
+        let requestedURL = URL + "/products"
+        Alamofire.request(requestedURL, method: .get)
+            .validate()
+            .responseArray { (response: DataResponse<[Item]>) in
+                
+                guard response.result.isSuccess else {
+                    onCompletion(nil, nil)
+                    return
+                }
+                
+                if let items = response.result.value as [Item]? {
+                    onCompletion(items, nil)
+                }
+        }
+        
     }
     
     func getBanners(onCompletion: @escaping ([ItemBanner]?, Error?) -> Void) {

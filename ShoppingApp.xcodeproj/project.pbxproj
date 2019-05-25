@@ -11,7 +11,6 @@
 		FF07E28E227264C4004E40BB /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF07E28D227264C4004E40BB /* Item.swift */; };
 		FF07E290227264D7004E40BB /* ItemCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF07E28F227264D7004E40BB /* ItemCategory.swift */; };
 		FF07E292227264EF004E40BB /* ShoppingCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF07E291227264EF004E40BB /* ShoppingCart.swift */; };
-		FF07E294227264FF004E40BB /* DataModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF07E293227264FF004E40BB /* DataModelManager.swift */; };
 		FF1CA6B32277C6B300C51744 /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1CA6B22277C6B300C51744 /* ItemCollectionViewCell.swift */; };
 		FF2012062295F3FD00DC793C /* RemoteServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2012052295F3FD00DC793C /* RemoteServiceManager.swift */; };
 		FF2661DB22752C9000CD356E /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2661DA22752C9000CD356E /* ItemTableViewCell.swift */; };
@@ -36,7 +35,6 @@
 		FF07E28D227264C4004E40BB /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		FF07E28F227264D7004E40BB /* ItemCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCategory.swift; sourceTree = "<group>"; };
 		FF07E291227264EF004E40BB /* ShoppingCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCart.swift; sourceTree = "<group>"; };
-		FF07E293227264FF004E40BB /* DataModelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelManager.swift; sourceTree = "<group>"; };
 		FF1CA6B22277C6B300C51744 /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		FF2012052295F3FD00DC793C /* RemoteServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteServiceManager.swift; sourceTree = "<group>"; };
 		FF2661DA22752C9000CD356E /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
@@ -117,7 +115,6 @@
 				FF07E28D227264C4004E40BB /* Item.swift */,
 				FF07E28F227264D7004E40BB /* ItemCategory.swift */,
 				FF07E291227264EF004E40BB /* ShoppingCart.swift */,
-				FF07E293227264FF004E40BB /* DataModelManager.swift */,
 				FF2661DA22752C9000CD356E /* ItemTableViewCell.swift */,
 				FF1CA6B22277C6B300C51744 /* ItemCollectionViewCell.swift */,
 				FFD3F9032294C49F00615A6F /* Purchase.swift */,
@@ -272,7 +269,6 @@
 				FFD3F9042294C49F00615A6F /* Purchase.swift in Sources */,
 				FF2012062295F3FD00DC793C /* RemoteServiceManager.swift in Sources */,
 				FFD3F9082294CABE00615A6F /* AuthenticationResponse.swift in Sources */,
-				FF07E294227264FF004E40BB /* DataModelManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
