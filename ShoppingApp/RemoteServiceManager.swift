@@ -14,8 +14,13 @@ class RemoteServiceManager {
     
     static let shared = RemoteServiceManager()
     let URL = "https://us-central1-ucu-ios-api.cloudfunctions.net"
+    var token: String?
     
-    private init() { }
+    private init() {
+        AuthenticationManager.shared.authenticate { (response) in
+            self.token = response.token
+        }
+    }
     
     func getItems(onCompletion: @escaping ([Item]?, Error?) -> Void) {
         let requestedURL = URL + "/products"
@@ -47,19 +52,35 @@ class RemoteServiceManager {
                 }                
                 
                 if let banners = response.result.value as [ItemBanner]? {
-                    print("obtuve info de banners")
-                    print(banners)
                     onCompletion(banners, nil)
                 }
             }
     }
     
-    func createPurchase() {
-        
-    }
-    
-    func getPurchases(onCompletion: @escaping ([Purchase]?, Error?) -> Void) {
-        
+    func getPurchases(onCompletion: @escaping ([ShoppingCart]?, Error?) -> Void) {
+        if let token = self.token as String? {
+            let bearer = "Bearer " + token
+            let requestedURL = URL + "/purchases"
+            let headers : HTTPHeaders = ["Authorization": bearer]
+            Alamofire.request(requestedURL, method: .get, parameters: nil, headers: headers)
+            .validate()
+            .responseArray { (response: DataResponse<[ShoppingCart]>) in
+                
+                guard response.result.isSuccess else {
+                    onCompletion(nil, nil)
+                    return
+                }
+                
+                if let purchases = response.result.value as [ShoppingCart]? {
+                    print("PURCHASES!")
+                    print(purchases)
+                    print("-------END")
+                    onCompletion(purchases, nil)
+                }
+            }
+        } else {
+            onCompletion(nil, nil)
+        }
     }
     
 }

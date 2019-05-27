@@ -7,14 +7,37 @@
 //
 
 import Foundation
+import ObjectMapper
 
-class ShoppingCart {
-    
-    // Dictionary to handle the relationship item and quantity.s
+class ShoppingCart: Mappable {
+
+    // Date data (Only for the purchases)
+    var date: Date?
+    // Dictionary to handle the relationship item and quantity.
     var itemQuantity: [Item: Int] = [:]
     var initialized = false
     
+    required init?(map: Map) { }
+    
     init() { }
+    
+    func mapping(map: Map) {
+        date <- (map["date"], CustomDateTransform())
+        var purchaseInfo: [PurchaseData]?
+        purchaseInfo <- map["products"]
+        fillShoppingCart(dataOfPurchase: purchaseInfo)
+    }
+    
+    // Add the data to the dictionary property.
+    func fillShoppingCart(dataOfPurchase: [PurchaseData]?) {
+        if let data = dataOfPurchase as [PurchaseData]? {
+            for info in data {
+                if let item = info.item as Item?, let quantity = info.quantity as Int? {
+                    itemQuantity[item] = quantity
+                }
+            }
+        }
+    }
     
     // Checks if there's at least one item in the dictionary.
     func isEmpty() -> Bool {

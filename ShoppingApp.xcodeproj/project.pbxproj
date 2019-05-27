@@ -21,8 +21,13 @@
 		FF54A761226A923C0046B0F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF54A760226A923C0046B0F5 /* Assets.xcassets */; };
 		FF54A764226A923C0046B0F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF54A762226A923C0046B0F5 /* LaunchScreen.storyboard */; };
 		FF54A76D226A94D70046B0F5 /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF54A76C226A94D70046B0F5 /* CheckoutViewController.swift */; };
+		FF8990C1229A0DF100059562 /* HistoricalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8990C0229A0DF100059562 /* HistoricalViewController.swift */; };
+		FF8990C5229A18A600059562 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8990C4229A18A600059562 /* MainNavigationController.swift */; };
+		FF8990C7229A193B00059562 /* HistoricalNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8990C6229A193B00059562 /* HistoricalNavigationController.swift */; };
+		FF8990C9229A323E00059562 /* PurchaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8990C8229A323E00059562 /* PurchaseCollectionViewCell.swift */; };
 		FF95EBD42274EC6C009EB033 /* BannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF95EBD32274EC6C009EB033 /* BannerCollectionViewCell.swift */; };
-		FFD3F9042294C49F00615A6F /* Purchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD3F9032294C49F00615A6F /* Purchase.swift */; };
+		FFCAB535229B42E900330FB4 /* CustomDateTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCAB534229B42E900330FB4 /* CustomDateTransform.swift */; };
+		FFCAB537229B682F00330FB4 /* PurchaseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCAB536229B682F00330FB4 /* PurchaseData.swift */; };
 		FFD3F9072294CABE00615A6F /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD3F9052294CABE00615A6F /* AuthenticationManager.swift */; };
 		FFD3F9082294CABE00615A6F /* AuthenticationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD3F9062294CABE00615A6F /* AuthenticationResponse.swift */; };
 /* End PBXBuildFile section */
@@ -46,8 +51,13 @@
 		FF54A763226A923C0046B0F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF54A765226A923C0046B0F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF54A76C226A94D70046B0F5 /* CheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
+		FF8990C0229A0DF100059562 /* HistoricalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalViewController.swift; sourceTree = "<group>"; };
+		FF8990C4229A18A600059562 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
+		FF8990C6229A193B00059562 /* HistoricalNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalNavigationController.swift; sourceTree = "<group>"; };
+		FF8990C8229A323E00059562 /* PurchaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		FF95EBD32274EC6C009EB033 /* BannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCollectionViewCell.swift; sourceTree = "<group>"; };
-		FFD3F9032294C49F00615A6F /* Purchase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Purchase.swift; sourceTree = "<group>"; };
+		FFCAB534229B42E900330FB4 /* CustomDateTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDateTransform.swift; sourceTree = "<group>"; };
+		FFCAB536229B682F00330FB4 /* PurchaseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseData.swift; sourceTree = "<group>"; };
 		FFD3F9052294CABE00615A6F /* AuthenticationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		FFD3F9062294CABE00615A6F /* AuthenticationResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -114,10 +124,15 @@
 				FF07E291227264EF004E40BB /* ShoppingCart.swift */,
 				FF2661DA22752C9000CD356E /* ItemTableViewCell.swift */,
 				FF1CA6B22277C6B300C51744 /* ItemCollectionViewCell.swift */,
-				FFD3F9032294C49F00615A6F /* Purchase.swift */,
 				FFD3F9052294CABE00615A6F /* AuthenticationManager.swift */,
 				FFD3F9062294CABE00615A6F /* AuthenticationResponse.swift */,
 				FF2012052295F3FD00DC793C /* RemoteServiceManager.swift */,
+				FF8990C0229A0DF100059562 /* HistoricalViewController.swift */,
+				FF8990C4229A18A600059562 /* MainNavigationController.swift */,
+				FF8990C6229A193B00059562 /* HistoricalNavigationController.swift */,
+				FF8990C8229A323E00059562 /* PurchaseCollectionViewCell.swift */,
+				FFCAB534229B42E900330FB4 /* CustomDateTransform.swift */,
+				FFCAB536229B682F00330FB4 /* PurchaseData.swift */,
 			);
 			path = ShoppingApp;
 			sourceTree = "<group>";
@@ -255,14 +270,19 @@
 				FF07E28E227264C4004E40BB /* Item.swift in Sources */,
 				FF54A75C226A923C0046B0F5 /* ShoppingBagViewController.swift in Sources */,
 				FF07E290227264D7004E40BB /* ItemCategory.swift in Sources */,
+				FF8990C9229A323E00059562 /* PurchaseCollectionViewCell.swift in Sources */,
+				FF8990C7229A193B00059562 /* HistoricalNavigationController.swift in Sources */,
 				FF54A76D226A94D70046B0F5 /* CheckoutViewController.swift in Sources */,
+				FFCAB537229B682F00330FB4 /* PurchaseData.swift in Sources */,
+				FF8990C1229A0DF100059562 /* HistoricalViewController.swift in Sources */,
 				FF54A75A226A923C0046B0F5 /* AppDelegate.swift in Sources */,
+				FF8990C5229A18A600059562 /* MainNavigationController.swift in Sources */,
 				FF07E292227264EF004E40BB /* ShoppingCart.swift in Sources */,
+				FFCAB535229B42E900330FB4 /* CustomDateTransform.swift in Sources */,
 				FF95EBD42274EC6C009EB033 /* BannerCollectionViewCell.swift in Sources */,
 				FFD3F9072294CABE00615A6F /* AuthenticationManager.swift in Sources */,
 				FF1CA6B32277C6B300C51744 /* ItemCollectionViewCell.swift in Sources */,
 				FF2661DB22752C9000CD356E /* ItemTableViewCell.swift in Sources */,
-				FFD3F9042294C49F00615A6F /* Purchase.swift in Sources */,
 				FF2012062295F3FD00DC793C /* RemoteServiceManager.swift in Sources */,
 				FFD3F9082294CABE00615A6F /* AuthenticationResponse.swift in Sources */,
 			);
