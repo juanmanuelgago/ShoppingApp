@@ -128,4 +128,18 @@ class ShoppingCart: Mappable {
         print(itemQuantity[itemToSet]!)
     }
     
+    // Method to get the dictionary to use as parameter for the POST method.
+    func createJSON() -> [String: Any] {
+        var simulatedJSON: [[String: Any]] = []
+        for (item, quantity) in itemQuantity {
+            if quantity > 0 {
+                var itemDictionary: [String: Any] = [:]
+                itemDictionary["product_id"] = item.id
+                itemDictionary["quantity"] = quantity
+                simulatedJSON.append(itemDictionary)
+            }
+        }
+        return [ "cart": simulatedJSON ]
+    }
+    
 }

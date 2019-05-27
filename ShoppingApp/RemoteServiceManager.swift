@@ -19,7 +19,33 @@ class RemoteServiceManager {
     private init() {
         AuthenticationManager.shared.authenticate { (response) in
             self.token = response.token
+            print(self.token)
         }
+    }
+    
+    func createPurchase(shoppingCart: ShoppingCart, onCompletion: @escaping (String?, Error?) -> Void) {
+        if let token = self.token as String? {
+            let parameters = shoppingCart.createJSON()
+            let requestedURL = URL + "/checkout"
+            let bearer = "Bearer " + token
+            let headers : HTTPHeaders = [ "Authorization": bearer ]
+            Alamofire.request(requestedURL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+            .validate()
+                .responseJSON { response in
+                    guard response.result.isSuccess else {
+                        print("error en el método del post!")
+                        print(response.result.error)
+                        onCompletion(nil, response.result.error)
+                        return
+                    }
+                    
+                    print("deberia de haber salido todo bien")
+                    print(response.result.value)
+                    onCompletion(response.result.value as! String, nil)
+                    
+            }
+        }
+        
     }
     
     func getItems(onCompletion: @escaping ([Item]?, Error?) -> Void) {
@@ -61,7 +87,7 @@ class RemoteServiceManager {
         if let token = self.token as String? {
             let bearer = "Bearer " + token
             let requestedURL = URL + "/purchases"
-            let headers : HTTPHeaders = ["Authorization": bearer]
+            let headers : HTTPHeaders = [ "Authorization": bearer ]
             Alamofire.request(requestedURL, method: .get, parameters: nil, headers: headers)
             .validate()
             .responseArray { (response: DataResponse<[ShoppingCart]>) in
