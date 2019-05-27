@@ -15,10 +15,6 @@ class HistoricalViewController: UIViewController {
     
     var purchases: [ShoppingCart] = []
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         initData()
@@ -59,15 +55,14 @@ extension HistoricalViewController: UICollectionViewDelegate, UICollectionViewDa
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! PurchaseCollectionViewCell
         if let date = purchases[indexPath.row].date as Date? {
             let formatter = DateFormatter()
+            formatter.dateStyle = .medium
+            formatter.timeStyle = .short
             let stringDate = formatter.string(from: date)
-            print("imprimiendo...")
-            print(stringDate)
-            print("terminando...")
             cell.dateLabel.text = stringDate
         } else {
             cell.dateLabel.text = "No date information"
         }
-        cell.purchaseQuantityLabel.text = String(purchases[indexPath.row].itemsWithQuantity().count) + " items"
+        cell.purchaseQuantityLabel.text = String(purchases[indexPath.row].itemsWithQuantity().count) + " items in the cart"
         cell.purchaseTotalLabel.text = "$" + String(purchases[indexPath.row].getFinalPrice())
         cell.purchaseImage.image = UIImage(named: "icon-shopping-cart")
         return cell
