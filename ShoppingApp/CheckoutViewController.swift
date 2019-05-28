@@ -45,8 +45,6 @@ class CheckoutViewController: UIViewController {
     }
     
     func initialConfiguration() {
-        print("estado del canCheckout?")
-        print(canCheckout)
         items = shoppingCart.itemsWithQuantity()
         setTotalPriceLabel()
     }
