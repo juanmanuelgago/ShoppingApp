@@ -31,14 +31,14 @@ class HistoricalViewController: UIViewController {
     
     func initData() {
         RemoteServiceManager.shared.getPurchases { (arrayPurchases, error) in
-            if let error = error as Error? {
-                print("llego un error en get purchases")
-                print(error)
+            if let _ = error as Error? {
+                let alert = UIAlertController(title: "Error", message: "Unable to retrieve your previous purchases. Please, try again later.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                self.present(alert, animated: true, completion: nil)
             } else {
                 self.purchases = []
                 if let arrayPurchases = arrayPurchases as [ShoppingCart]? {
-                    self.purchases =  arrayPurchases
-                    print(self.purchases)
+                    self.purchases = arrayPurchases
                 }
             }
             self.purchaseCollectionView.reloadData()
@@ -56,7 +56,13 @@ extension HistoricalViewController: UICollectionViewDelegateFlowLayout {
 
 extension HistoricalViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if purchases.count == 0 {
+            collectionView.setEmptyView(title: "Ups!", message: "You don't have any purchase made.")
+        } else {
+            collectionView.restore()
+        }
         return purchases.count
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -87,6 +93,38 @@ extension HistoricalViewController: PurchaseDetailsDelegate {
             performSegue(withIdentifier: "DetailSegue", sender: self)
         }
     }
+}
+
+extension UICollectionView {
+    
+    func setEmptyView(title: String, message: String) {
+        let emptyView = UIView(frame: CGRect(x: self.center.x, y: self.center.y, width: self.bounds.size.width, height: self.bounds.size.height))
+        let titleLabel = UILabel()
+        let messageLabel = UILabel()
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        messageLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.textColor = UIColor.black
+        titleLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
+        messageLabel.textColor = UIColor.lightGray
+        messageLabel.font = UIFont(name: "HelveticaNeue-Regular", size: 17)
+        emptyView.addSubview(titleLabel)
+        emptyView.addSubview(messageLabel)
+        titleLabel.centerYAnchor.constraint(equalTo: emptyView.centerYAnchor).isActive = true
+        titleLabel.centerXAnchor.constraint(equalTo: emptyView.centerXAnchor).isActive = true
+        messageLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20).isActive = true
+        messageLabel.leftAnchor.constraint(equalTo: emptyView.leftAnchor, constant: 20).isActive = true
+        messageLabel.rightAnchor.constraint(equalTo: emptyView.rightAnchor, constant: -20).isActive = true
+        titleLabel.text = title
+        messageLabel.text = message
+        messageLabel.numberOfLines = 0
+        messageLabel.textAlignment = .center
+        self.backgroundView = emptyView
+    }
+    
+    func restore() {
+        self.backgroundView = nil
+    }
+    
 }
 
 

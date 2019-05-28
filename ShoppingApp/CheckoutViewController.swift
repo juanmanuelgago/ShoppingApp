@@ -74,7 +74,7 @@ class CheckoutViewController: UIViewController {
     @IBAction func checkoutShoppingCart(_ sender: Any) {
         RemoteServiceManager.shared.createPurchase(shoppingCart: shoppingCart) { (success, error) in
             if let _ = error as Error? {
-                let alert = UIAlertController(title: "Successful Purchase", message: "Unexpected error while processing the purchase. Please, try again later.", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Error", message: "Unable to process your shopping cart. Please, try again later.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default))
                 self.present(alert, animated: true, completion: nil)
             } else {

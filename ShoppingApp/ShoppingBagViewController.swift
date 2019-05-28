@@ -52,9 +52,10 @@ class ShoppingBagViewController: UIViewController {
     func initData() {
         // Add data to the banner array for the collection view.
         RemoteServiceManager.shared.getBanners { (arrayBanners, error) in
-            if let error = error as Error? {
-                print("llego un error en get banners")
-                print(error)
+            if let _ = error as Error? {
+                let alert = UIAlertController(title: "Error", message: "Unexpected error with the banners.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                self.present(alert, animated: true, completion: nil)
             } else {
                 self.banners = []
                 if let arrayBanners = arrayBanners as [ItemBanner]? {
@@ -70,13 +71,13 @@ class ShoppingBagViewController: UIViewController {
         
         // Add data to the items array for the table view.
         RemoteServiceManager.shared.getItems { (arrayItems, error) in
-            if let error = error as Error? {
-                print("llego un error en get items")
-                print(error)
+            if let _ = error as Error? {
+                let alert = UIAlertController(title: "Error", message: "Unexpected error with the items.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                self.present(alert, animated: true, completion: nil)
             } else {
                 self.items = []
                 if let arrayItems = arrayItems as [Item]? {
-                    print(arrayItems.count)
                     var dairyItems: [Item] = []
                     var veggiesItems: [Item] = []
                     var fruitsItems: [Item] = []
@@ -279,10 +280,4 @@ extension ShoppingBagViewController: UISearchBarDelegate {
         itemSearchBar.endEditing(true)
     }
     
-    
-    
 }
-
-
-
-
