@@ -14,38 +14,28 @@ class RemoteServiceManager {
     
     static let shared = RemoteServiceManager()
     let URL = "https://us-central1-ucu-ios-api.cloudfunctions.net"
-    var token: String?
     
-    private init() {
-        AuthenticationManager.shared.authenticate { (response) in
-            self.token = response.token
-            print(self.token)
-        }
-    }
+    private init() { }
     
     func createPurchase(shoppingCart: ShoppingCart, onCompletion: @escaping (String?, Error?) -> Void) {
-        if let token = self.token as String? {
+        AuthenticationManager.shared.authenticate { (authResponse) in
             let parameters = shoppingCart.createJSON()
-            let requestedURL = URL + "/checkout"
-            let bearer = "Bearer " + token
+            let bearer = "Bearer " + authResponse.token
+            let requestedURL = self.URL + "/checkout"
             let headers : HTTPHeaders = [ "Authorization": bearer ]
             Alamofire.request(requestedURL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
-            .validate()
-                .responseJSON { response in
-                    guard response.result.isSuccess else {
-                        print("error en el método del post!")
-                        print(response.result.error)
-                        onCompletion(nil, response.result.error)
-                        return
+                .validate()
+                .responseString { response in
+                    switch response.result {
+                    case .success:
+                        if let validMessage = response.result.value as String? {
+                            onCompletion(validMessage, nil)
+                        }
+                    case .failure(let errorFailure):
+                        onCompletion(nil, errorFailure)
                     }
-                    
-                    print("deberia de haber salido todo bien")
-                    print(response.result.value)
-                    onCompletion(response.result.value as! String, nil)
-                    
             }
         }
-        
     }
     
     func getItems(onCompletion: @escaping ([Item]?, Error?) -> Void) {
@@ -54,13 +44,13 @@ class RemoteServiceManager {
             .validate()
             .responseArray { (response: DataResponse<[Item]>) in
                 
-                guard response.result.isSuccess else {
-                    onCompletion(nil, nil)
-                    return
-                }
-                
-                if let items = response.result.value as [Item]? {
-                    onCompletion(items, nil)
+                switch response.result {
+                case .success:
+                    if let items = response.result.value as [Item]? {
+                        onCompletion(items, nil)
+                    }
+                case .failure(let errorFailure):
+                    onCompletion(nil, errorFailure)
                 }
         }
         
@@ -72,41 +62,38 @@ class RemoteServiceManager {
             .validate()
             .responseArray { (response: DataResponse<[ItemBanner]>) in
                 
-                guard response.result.isSuccess else {
-                    onCompletion(nil, nil)
-                    return
-                }                
-                
-                if let banners = response.result.value as [ItemBanner]? {
-                    onCompletion(banners, nil)
+                switch response.result {
+                    case .success:
+                        if let banners = response.result.value as [ItemBanner]? {
+                            onCompletion(banners, nil)
+                        }
+                    case .failure(let errorFailure):
+                        onCompletion(nil, errorFailure)
+                    
                 }
             }
     }
     
     func getPurchases(onCompletion: @escaping ([ShoppingCart]?, Error?) -> Void) {
-        if let token = self.token as String? {
-            let bearer = "Bearer " + token
-            let requestedURL = URL + "/purchases"
+        AuthenticationManager.shared.authenticate { (authResponse) in
+            let requestedURL = self.URL + "/purchases"
+            let bearer = "Bearer " + authResponse.token
             let headers : HTTPHeaders = [ "Authorization": bearer ]
             Alamofire.request(requestedURL, method: .get, parameters: nil, headers: headers)
-            .validate()
-            .responseArray { (response: DataResponse<[ShoppingCart]>) in
-                
-                guard response.result.isSuccess else {
-                    onCompletion(nil, nil)
-                    return
-                }
-                
-                if let purchases = response.result.value as [ShoppingCart]? {
-                    print("PURCHASES!")
-                    print(purchases)
-                    print("-------END")
-                    onCompletion(purchases, nil)
-                }
+                .validate()
+                .responseArray { (response: DataResponse<[ShoppingCart]>) in
+                    
+                    switch response.result {
+                    case .success:
+                        if let purchases = response.result.value as [ShoppingCart]? {
+                            onCompletion(purchases, nil)
+                        }
+                    case .failure(let errorFailure):
+                        onCompletion(nil, errorFailure)
+                    }
+                    
             }
-        } else {
-            onCompletion(nil, nil)
         }
     }
-    
 }
+

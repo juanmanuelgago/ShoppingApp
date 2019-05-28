@@ -64,7 +64,7 @@ extension HistoricalViewController: UICollectionViewDelegate, UICollectionViewDa
         }
         cell.purchaseQuantityLabel.text = String(purchases[indexPath.row].itemsWithQuantity().count) + " items in the cart"
         cell.purchaseTotalLabel.text = "$" + String(purchases[indexPath.row].getFinalPrice())
-        cell.purchaseImage.image = UIImage(named: "icon-shopping-cart")
+        cell.purchaseImage.image = UIImage(named: "cart1")
         return cell
     }
     
