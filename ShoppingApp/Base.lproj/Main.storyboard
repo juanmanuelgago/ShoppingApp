@@ -248,11 +248,13 @@
             <objects>
                 <navigationController id="ztV-LF-7qv" customClass="HistoricalNavigationController" customModule="ShoppingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Purchases" image="icon-list" id="tcI-3x-OXZ"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="06D-4M-TEW">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" backIndicatorImage="icon-back" largeTitles="YES" backIndicatorTransitionMaskImage="icon-back" id="06D-4M-TEW">
                         <rect key="frame" x="0.0" y="44" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.22711160778999329" green="0.21414569020271301" blue="0.38806742429733276" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="largeTitleTextAttributes">
                             <color key="textColor" red="0.22352941179999999" green="0.2156862745" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textShadowColor" red="0.22711160778999329" green="0.21414569020271301" blue="0.38806742429733276" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </textAttributes>
                     </navigationBar>
                     <connections>
@@ -261,18 +263,18 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JoP-i1-USl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-411" y="1142"/>
+            <point key="canvasLocation" x="-410" y="882"/>
         </scene>
         <!--My Purchases-->
         <scene sceneID="T2n-hV-9Jx">
             <objects>
                 <viewController id="IyG-ND-QWy" customClass="HistoricalViewController" customModule="ShoppingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="x4F-Oj-omq">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Rw3-sS-c9p">
-                                <rect key="frame" x="0.0" y="140" width="375" height="589"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="589"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cuL-kR-a6D">
                                     <size key="itemSize" width="355" height="194"/>
@@ -369,11 +371,12 @@
                     <navigationItem key="navigationItem" title="My Purchases" id="Ags-tR-qBl"/>
                     <connections>
                         <outlet property="purchaseCollectionView" destination="Rw3-sS-c9p" id="qQV-Jd-gJx"/>
+                        <segue destination="KVx-Zg-sm7" kind="show" identifier="DetailSegue" id="FpJ-U0-Nqj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2hk-vk-bWG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="472.80000000000001" y="1141.6256157635469"/>
+            <point key="canvasLocation" x="473" y="882"/>
         </scene>
         <!--Checkout View Controller-->
         <scene sceneID="h2A-oI-NrP">
@@ -509,7 +512,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MSQ-Yc-Wbk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1318" y="134"/>
+            <point key="canvasLocation" x="1594" y="424"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Gm5-A6-Kwp">
@@ -568,4 +571,7 @@
         <image name="icon-cart" width="24" height="21"/>
         <image name="icon-list" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="ezE-t5-NOh"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -14,6 +14,7 @@ class CheckoutViewController: UIViewController {
     @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var itemCollectionView: UICollectionView!
     
+    var canCheckout = false
     var shoppingCart = ShoppingCart()
     var items: [Item] = []
     
@@ -31,15 +32,23 @@ class CheckoutViewController: UIViewController {
         initialConfiguration()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.tabBarController?.tabBar.isHidden = true
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationItem.title = "Shopping Cart"
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        self.navigationController?.navigationBar.prefersLargeTitles = false
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     func initialConfiguration() {
+        print("estado del canCheckout?")
+        print(canCheckout)
         items = shoppingCart.itemsWithQuantity()
         setTotalPriceLabel()
-        self.navigationItem.title = "Shopping Cart"
     }
     
     func setTotalPriceLabel() {
@@ -50,6 +59,12 @@ class CheckoutViewController: UIViewController {
     // Method to style the Checkout button.
     func styleCheckoutButton() {
         checkoutButton.layer.cornerRadius = checkoutButton.frame.height / 2
+        guard canCheckout else {
+//            checkoutButton.isHidden = true
+            checkoutButton.isEnabled = false
+            checkoutButton.alpha = 0.25
+            return
+        }
     }
     
     // Finishes the checkout process, cleaning the items of shopping bag.
@@ -90,6 +105,11 @@ extension CheckoutViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        guard canCheckout else {
+            return
+        }
+        
         toolBar.removeFromSuperview() // Prevents issue of creating multiple pickers if there's one picker active.
         picker.removeFromSuperview() // Closes the active one, and creates a new one for the last cell touched.
         selectedItem = items[indexPath.row]

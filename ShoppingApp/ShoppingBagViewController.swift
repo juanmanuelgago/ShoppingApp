@@ -33,19 +33,20 @@ class ShoppingBagViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        // If the shopping cart changed a certain value, the table must refresh its cells.
+        self.navigationController?.navigationBar.prefersLargeTitles = false
         initData()
+        // If the shopping cart changed a certain value, the table must refresh its cells.
         itemTableView.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        self.navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinyViewController = segue.destination as! CheckoutViewController
         destinyViewController.shoppingCart = self.shoppingCart
+        destinyViewController.canCheckout = true // Allows the procedure of doing the checkout.
     }
     
     func initData() {

@@ -124,8 +124,6 @@ class ShoppingCart: Mappable {
     // Value in dictionary should not be nil, so return statement force unwrap of value.
     func setItemQuantity(itemToSet: Item, newQuantity: Int) {
         itemQuantity[itemToSet] = newQuantity
-        print("seteado!")
-        print(itemQuantity[itemToSet]!)
     }
     
     // Method to get the dictionary to use as parameter for the POST method.

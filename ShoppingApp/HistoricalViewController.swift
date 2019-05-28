@@ -14,10 +14,19 @@ class HistoricalViewController: UIViewController {
     @IBOutlet weak var purchaseCollectionView: UICollectionView!
     
     var purchases: [ShoppingCart] = []
+    var selectedPurchase: ShoppingCart?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         initData()
+    }
+        
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinyViewController = segue.destination as! CheckoutViewController
+        if let selectedPurchase = selectedPurchase as ShoppingCart? {
+            destinyViewController.shoppingCart = selectedPurchase
+            destinyViewController.canCheckout = false // Read-Only mode for the next view controller.
+        }
     }
     
     func initData() {
@@ -53,6 +62,7 @@ extension HistoricalViewController: UICollectionViewDelegate, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let identifier = "PurchaseCell"
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! PurchaseCollectionViewCell
+        cell.purchaseDelegate = self
         if let date = purchases[indexPath.row].date as Date? {
             let formatter = DateFormatter()
             formatter.dateStyle = .medium
@@ -67,7 +77,20 @@ extension HistoricalViewController: UICollectionViewDelegate, UICollectionViewDa
         cell.purchaseImage.image = UIImage(named: "cart1")
         return cell
     }
-    
-    
-    
 }
+
+extension HistoricalViewController: PurchaseDetailsDelegate {
+    func didRequestMoreDetails(cell: UICollectionViewCell) {
+        if let cellLocation = purchaseCollectionView.indexPath(for: cell) as IndexPath? {
+            let purchaseSelected = purchases[cellLocation.row]
+            selectedPurchase = purchaseSelected
+            performSegue(withIdentifier: "DetailSegue", sender: self)
+        }
+    }
+}
+
+
+
+
+
+
