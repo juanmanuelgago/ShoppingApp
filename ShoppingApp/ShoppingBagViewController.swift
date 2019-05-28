@@ -25,6 +25,9 @@ class ShoppingBagViewController: UIViewController {
     var filteredItems: [[Item]] = []
     // If there's something being written, this property is set to true.
     var searching = false
+    
+    // To use when the requests are being done.
+    var activityIndicator = UIActivityIndicatorView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +37,7 @@ class ShoppingBagViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.navigationController?.navigationBar.prefersLargeTitles = false
+        startActivityIndicator()
         initData()
         // If the shopping cart changed a certain value, the table must refresh its cells.
         itemTableView.reloadData()
@@ -72,6 +76,7 @@ class ShoppingBagViewController: UIViewController {
         // Add data to the items array for the table view.
         RemoteServiceManager.shared.getItems { (arrayItems, error) in
             if let _ = error as Error? {
+                self.stopActivityIndicator()
                 let alert = UIAlertController(title: "Error", message: "Unexpected error with the items.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default))
                 self.present(alert, animated: true, completion: nil)
@@ -103,6 +108,7 @@ class ShoppingBagViewController: UIViewController {
                     }
                     self.categories = [ItemCategory.dairy, ItemCategory.fruit, ItemCategory.veggie]
                     self.itemTableView.reloadData()
+                    self.stopActivityIndicator()
                 }
             }
         }
@@ -115,6 +121,26 @@ class ShoppingBagViewController: UIViewController {
         if let textFieldSearch = itemSearchBar.value(forKey: "_searchField") as? UITextField {
             textFieldSearch.backgroundColor = UIColor(red: CGFloat(234/255.0), green: CGFloat(235/255.0), blue: CGFloat(242/255.0), alpha: CGFloat(1.0))
             textFieldSearch.textColor = UIColor(red: CGFloat(160/255.0), green: CGFloat(162/255.0), blue: CGFloat(178/255.0), alpha: CGFloat(1.0))
+        }
+    }
+    
+    // Start the activity indicator. This method is called when the requests are being done.
+    func startActivityIndicator() {
+        let newView = UIView(frame: UIScreen.main.bounds)
+        newView.tag = 100 // Random tag, for the process of dismissing the view.
+        newView.backgroundColor = .white
+        self.view.addSubview(newView)
+        newView.addSubview(activityIndicator)
+        activityIndicator.center = newView.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        activityIndicator.startAnimating()
+    }
+    
+     func stopActivityIndicator() {
+        activityIndicator.stopAnimating()
+        if let viewTag = self.view.viewWithTag(100) {
+            viewTag.removeFromSuperview()
         }
     }
     

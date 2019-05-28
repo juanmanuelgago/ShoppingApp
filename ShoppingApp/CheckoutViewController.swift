@@ -18,9 +18,10 @@ class CheckoutViewController: UIViewController {
     var shoppingCart = ShoppingCart()
     var items: [Item] = []
     
-    // Instances of the picker and the toolbar. Both are created and shown when a cell is selected.
+    // Instances of the picker, toolbar and the activity indicator. The first two are created and shown when a cell is selected, while the activity indicator is shown when the checkout is being done.
     var picker = UIPickerView()
     var toolBar = UIToolbar()
+    var activityIndicator = UIActivityIndicatorView()
     // This variable bind the value of the picker that's being selected. It's an optional.
     var pickerValue: Int?
     // This variable gets the instance of the item of the selected cell, when one of those is pressed.
@@ -71,18 +72,43 @@ class CheckoutViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    // Start the activity indicator. This method is called when the checkout is being done.
+    func startActivityIndicator() {
+        let newView = UIView(frame: UIScreen.main.bounds)
+        newView.tag = 101 // Random tag, for the process of dismissing the view.
+        newView.backgroundColor = .white
+        newView.alpha = 0.5
+        self.view.addSubview(newView)
+        newView.addSubview(activityIndicator)
+        activityIndicator.center = newView.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        activityIndicator.startAnimating()
+    }
+    
+    // Stop the loader activity.
+    func stopActivityIndicator() {
+        activityIndicator.stopAnimating()
+        if let viewTag = self.view.viewWithTag(101) {
+            viewTag.removeFromSuperview()
+        }
+    }
+    
     @IBAction func checkoutShoppingCart(_ sender: Any) {
+        startActivityIndicator()
         RemoteServiceManager.shared.createPurchase(shoppingCart: shoppingCart) { (success, error) in
             if let _ = error as Error? {
                 let alert = UIAlertController(title: "Error", message: "Unable to process your shopping cart. Please, try again later.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default))
                 self.present(alert, animated: true, completion: nil)
+                self.stopActivityIndicator()
             } else {
                 let alert = UIAlertController(title: "Successful Purchase", message: success, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
                     self.popCheckoutPage()
                 }))
                 self.present(alert, animated: true, completion: nil)
+                self.stopActivityIndicator()
             }
         }
     }

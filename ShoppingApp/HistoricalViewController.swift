@@ -16,6 +16,8 @@ class HistoricalViewController: UIViewController {
     var purchases: [ShoppingCart] = []
     var selectedPurchase: ShoppingCart?
     
+    var activityIndicator = UIActivityIndicatorView()
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         initData()
@@ -30,6 +32,7 @@ class HistoricalViewController: UIViewController {
     }
     
     func initData() {
+        startActivityIndicator()
         RemoteServiceManager.shared.getPurchases { (arrayPurchases, error) in
             if let _ = error as Error? {
                 let alert = UIAlertController(title: "Error", message: "Unable to retrieve your previous purchases. Please, try again later.", preferredStyle: .alert)
@@ -41,7 +44,28 @@ class HistoricalViewController: UIViewController {
                     self.purchases = arrayPurchases
                 }
             }
+            self.stopActivityIndicator()
             self.purchaseCollectionView.reloadData()
+        }
+    }
+    
+    // Handle the activity indicator. This method is called when the purchases are being retrieved.
+    func startActivityIndicator() {
+        let newView = UIView(frame: UIScreen.main.bounds)
+        newView.tag = 100 // Random tag, for the process of dismissing the view.
+        newView.backgroundColor = .white
+        self.view.addSubview(newView)
+        newView.addSubview(activityIndicator)
+        activityIndicator.center = newView.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        activityIndicator.startAnimating()
+    }
+    
+    func stopActivityIndicator() {
+        activityIndicator.stopAnimating()
+        if let viewTag = self.view.viewWithTag(100) {
+            viewTag.removeFromSuperview()
         }
     }
 }
