@@ -20,6 +20,7 @@ class PurchaseCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var purchaseTotalLabel: UILabel!
     @IBOutlet weak var moreDetailsButton: UIButton!
+    @IBOutlet weak var cardView: UIView!
     
     var purchaseDelegate: PurchaseDetailsDelegate?
     
@@ -27,6 +28,16 @@ class PurchaseCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         styleImage()
         styleButton()
+        styleCardView()
+    }
+    
+    func styleCardView() {
+        cardView.layer.backgroundColor = UIColor.white.cgColor
+        cardView.layer.cornerRadius = 5
+        cardView.layer.shadowOpacity = 0.5
+        cardView.layer.shadowColor = UIColor.darkGray.cgColor
+        cardView.layer.shadowOffset = CGSize(width: 0, height: 0)
+        cardView.layer.masksToBounds = false
     }
     
     func styleImage() {

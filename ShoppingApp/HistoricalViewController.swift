@@ -73,7 +73,7 @@ class HistoricalViewController: UIViewController {
 extension HistoricalViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width - 10, height: 200)
+        return CGSize(width: collectionView.frame.width - 10, height: 225)
     }
     
 }
