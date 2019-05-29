@@ -32,10 +32,10 @@ class PurchaseCollectionViewCell: UICollectionViewCell {
     }
     
     func styleCardView() {
-        cardView.layer.backgroundColor = UIColor.white.cgColor
-        cardView.layer.cornerRadius = 5
-        cardView.layer.shadowOpacity = 0.5
-        cardView.layer.shadowColor = UIColor.darkGray.cgColor
+        cardView.layer.backgroundColor = UIColor(red: 250.0, green: 250.0, blue: 250.0, alpha: 1.0).cgColor
+        cardView.layer.cornerRadius = 10
+        cardView.layer.shadowOpacity = 0.75
+        cardView.layer.shadowColor = UIColor.lightGray.cgColor
         cardView.layer.shadowOffset = CGSize(width: 0, height: 0)
         cardView.layer.masksToBounds = false
     }
