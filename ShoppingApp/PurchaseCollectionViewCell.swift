@@ -18,6 +18,7 @@ class PurchaseCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var purchaseImage: UIImageView!
     @IBOutlet weak var purchaseQuantityLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var hourLabel: UILabel!
     @IBOutlet weak var purchaseTotalLabel: UILabel!
     @IBOutlet weak var moreDetailsButton: UIButton!
     @IBOutlet weak var cardView: UIView!

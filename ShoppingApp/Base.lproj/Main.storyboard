@@ -318,7 +318,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DRX-FO-hGJ" userLabel="Quanity Label">
-                                                    <rect key="frame" x="35.666666666666657" y="66" width="159" height="19.333333333333329"/>
+                                                    <rect key="frame" x="35.666666666666657" y="88.333333333333329" width="159" height="19.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -329,21 +329,30 @@
                                                     <color key="textColor" red="0.16862745100000001" green="0.1529411765" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p5N-sQ-gnc">
+                                                    <rect key="frame" x="35.666666666666671" y="53.666666666666657" width="162.33333333333331" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </view>
                                         <constraints>
                                             <constraint firstItem="3kN-O2-clQ" firstAttribute="leading" secondItem="v4f-2k-B7j" secondAttribute="leading" id="2kA-I5-NHx"/>
-                                            <constraint firstItem="DRX-FO-hGJ" firstAttribute="top" secondItem="xEX-co-jlO" secondAttribute="bottom" constant="15" id="3Oc-dN-l6V"/>
+                                            <constraint firstItem="0yJ-q1-Kwg" firstAttribute="leading" secondItem="p5N-sQ-gnc" secondAttribute="trailing" constant="11.666666666666629" id="7Og-OH-ZRl"/>
                                             <constraint firstItem="v4f-2k-B7j" firstAttribute="centerX" secondItem="lo6-6C-vB8" secondAttribute="centerX" id="8vR-Ax-lUA"/>
                                             <constraint firstItem="0yJ-q1-Kwg" firstAttribute="leading" secondItem="DRX-FO-hGJ" secondAttribute="trailing" constant="15" id="CDz-Af-L3S"/>
+                                            <constraint firstItem="3kN-O2-clQ" firstAttribute="top" secondItem="DRX-FO-hGJ" secondAttribute="bottom" constant="2.5" id="DZh-9r-dSs"/>
                                             <constraint firstItem="0yJ-q1-Kwg" firstAttribute="leading" secondItem="3kN-O2-clQ" secondAttribute="trailing" constant="15" id="FJx-Ri-7Gr"/>
                                             <constraint firstItem="DRX-FO-hGJ" firstAttribute="leading" secondItem="v4f-2k-B7j" secondAttribute="leading" id="FeA-d0-Hjo"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="hig-iI-tc1" secondAttribute="trailing" id="Jhg-IK-OO2"/>
+                                            <constraint firstItem="p5N-sQ-gnc" firstAttribute="top" secondItem="xEX-co-jlO" secondAttribute="bottom" constant="2.5" id="Loz-4y-QwN"/>
                                             <constraint firstAttribute="bottom" secondItem="v4f-2k-B7j" secondAttribute="bottom" constant="30" id="O0D-5Z-LaR"/>
                                             <constraint firstItem="0yJ-q1-Kwg" firstAttribute="trailing" secondItem="v4f-2k-B7j" secondAttribute="trailing" id="O0U-6D-CYP"/>
                                             <constraint firstItem="0yJ-q1-Kwg" firstAttribute="leading" secondItem="xEX-co-jlO" secondAttribute="trailing" constant="15" id="RWb-dF-Ycd"/>
                                             <constraint firstItem="0yJ-q1-Kwg" firstAttribute="top" secondItem="lo6-6C-vB8" secondAttribute="top" constant="30" id="VWL-IZ-gX5"/>
                                             <constraint firstItem="v4f-2k-B7j" firstAttribute="top" secondItem="0yJ-q1-Kwg" secondAttribute="bottom" constant="15" id="Xr5-L5-Xwd"/>
+                                            <constraint firstItem="p5N-sQ-gnc" firstAttribute="leading" secondItem="xEX-co-jlO" secondAttribute="leading" id="bma-pn-Q87"/>
                                             <constraint firstItem="3kN-O2-clQ" firstAttribute="bottom" secondItem="0yJ-q1-Kwg" secondAttribute="bottom" id="gXt-Eh-1TR"/>
                                             <constraint firstItem="xEX-co-jlO" firstAttribute="top" secondItem="0yJ-q1-Kwg" secondAttribute="top" id="khR-KN-WcC"/>
                                             <constraint firstItem="v4f-2k-B7j" firstAttribute="width" secondItem="lo6-6C-vB8" secondAttribute="width" multiplier="0.8" id="qqx-ld-Gk6"/>
@@ -355,6 +364,7 @@
                                         <connections>
                                             <outlet property="cardView" destination="hig-iI-tc1" id="Yk7-TU-4HZ"/>
                                             <outlet property="dateLabel" destination="xEX-co-jlO" id="bKK-KL-JuR"/>
+                                            <outlet property="hourLabel" destination="p5N-sQ-gnc" id="caJ-sZ-hV4"/>
                                             <outlet property="moreDetailsButton" destination="v4f-2k-B7j" id="jEy-s1-EcI"/>
                                             <outlet property="purchaseImage" destination="0yJ-q1-Kwg" id="uJ3-vG-T6Z"/>
                                             <outlet property="purchaseQuantityLabel" destination="DRX-FO-hGJ" id="QUK-f0-n55"/>

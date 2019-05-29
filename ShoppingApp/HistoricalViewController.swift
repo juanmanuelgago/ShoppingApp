@@ -95,14 +95,22 @@ extension HistoricalViewController: UICollectionViewDelegate, UICollectionViewDa
         cell.purchaseDelegate = self
         if let date = purchases[indexPath.row].date as Date? {
             let formatter = DateFormatter()
-            formatter.dateStyle = .medium
-            formatter.timeStyle = .short
+            formatter.dateFormat = "yyyy-MM-dd"
             let stringDate = formatter.string(from: date)
             cell.dateLabel.text = stringDate
+            formatter.dateFormat = "HH:mm"
+            let hourDate = formatter.string(from: date)
+            cell.hourLabel.text =  "at " + hourDate
         } else {
-            cell.dateLabel.text = "No date information"
+            cell.dateLabel.text = ""
+            cell.hourLabel.text = ""
         }
-        cell.purchaseQuantityLabel.text = String(purchases[indexPath.row].itemsWithQuantity().count) + " items in the cart"
+        let quantity = purchases[indexPath.row].itemsWithQuantity().count
+        if quantity > 1 {
+            cell.purchaseQuantityLabel.text = String(quantity) + " items in the cart"
+        } else if quantity == 1 {
+            cell.purchaseQuantityLabel.text = String(quantity) + " item in the cart"
+        }
         cell.purchaseTotalLabel.text = "$" + String(purchases[indexPath.row].getFinalPrice())
         cell.purchaseImage.image = UIImage(named: "cart1")
         return cell
