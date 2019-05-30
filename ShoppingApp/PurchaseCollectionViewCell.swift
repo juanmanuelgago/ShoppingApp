@@ -10,6 +10,7 @@ import UIKit
 
 protocol PurchaseDetailsDelegate {
     // Protocol to connect the actions in the cells with the Purchase View controller.
+    // Notifies the view controller that one of the cells in the collection was touched.
     func didRequestMoreDetails(cell: UICollectionViewCell)
 }
 
@@ -31,7 +32,8 @@ class PurchaseCollectionViewCell: UICollectionViewCell {
         styleButton()
         styleCardView()
     }
-    
+
+    // Creates the card layout for the cells in the collection view.
     func styleCardView() {
         cardView.layer.backgroundColor = UIColor(red: 250.0, green: 250.0, blue: 250.0, alpha: 1.0).cgColor
         cardView.layer.cornerRadius = 10
@@ -41,6 +43,7 @@ class PurchaseCollectionViewCell: UICollectionViewCell {
         cardView.layer.masksToBounds = false
     }
     
+    // Styles the image as a circle.
     func styleImage() {
         purchaseImage.layer.masksToBounds = false
         purchaseImage.layer.cornerRadius = purchaseImage.frame.height / 2
@@ -48,6 +51,7 @@ class PurchaseCollectionViewCell: UICollectionViewCell {
     }
     
     func styleButton() {
+        // Similar style to the add button in the shopping bag view controller.
         moreDetailsButton.backgroundColor = .clear
         moreDetailsButton.layer.cornerRadius = 15
         moreDetailsButton.layer.borderColor = UIColor.purple.cgColor
@@ -55,6 +59,7 @@ class PurchaseCollectionViewCell: UICollectionViewCell {
     }
     
     @IBAction func moreDetailAction(_ sender: Any) {
+        // Communicates through the delegate with the historical view controller.
         purchaseDelegate?.didRequestMoreDetails(cell: self)
     }
 }

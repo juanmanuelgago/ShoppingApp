@@ -23,12 +23,12 @@ class ShoppingCart: Mappable {
     
     func mapping(map: Map) {
         date <- (map["date"], CustomDateTransform())
-        var purchaseInfo: [PurchaseData]?
+        var purchaseInfo: [PurchaseData]? // This variable is used as an intermediate array to retrieve the items of the purchase, with their quantity.
         purchaseInfo <- map["products"]
         fillShoppingCart(dataOfPurchase: purchaseInfo)
     }
     
-    // Add the data to the dictionary property.
+    // Add the data to the dictionary property, from the purchase.
     func fillShoppingCart(dataOfPurchase: [PurchaseData]?) {
         if let data = dataOfPurchase as [PurchaseData]? {
             for info in data {
@@ -127,6 +127,7 @@ class ShoppingCart: Mappable {
     }
     
     // Method to get the dictionary to use as parameter for the POST method.
+    // The return of the method is used in the POST method in the RemoteService.
     func createJSON() -> [String: Any] {
         var simulatedJSON: [[String: Any]] = []
         for (item, quantity) in itemQuantity {

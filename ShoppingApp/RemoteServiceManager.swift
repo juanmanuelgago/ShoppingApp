@@ -17,6 +17,9 @@ class RemoteServiceManager {
     
     private init() { }
     
+    
+    // POST method to create the shopping cart in the server.
+    // Two cases: An error and the String received, which is shown in the successful case of the request.
     func createPurchase(shoppingCart: ShoppingCart, onCompletion: @escaping (String?, Error?) -> Void) {
         AuthenticationManager.shared.authenticate { (authResponse) in
             let parameters = shoppingCart.createJSON()
@@ -38,6 +41,8 @@ class RemoteServiceManager {
         }
     }
     
+    // GET method to receive the items of the supermarket.
+    // Two cases: An error and the JSON object to map as an Item.
     func getItems(onCompletion: @escaping ([Item]?, Error?) -> Void) {
         let requestedURL = URL + "/products"
         Alamofire.request(requestedURL, method: .get)
@@ -56,6 +61,8 @@ class RemoteServiceManager {
         
     }
     
+    // GET method to receive the banners.
+    // Two cases: An error and the JSON object to map as an ItemBanner.
     func getBanners(onCompletion: @escaping ([ItemBanner]?, Error?) -> Void) {
         let requestedURL = URL + "/promoted"
         Alamofire.request(requestedURL, method: .get)
@@ -73,7 +80,9 @@ class RemoteServiceManager {
                 }
             }
     }
-    
+
+    // GET method to receive the different purchases made by the user in the supermarket.
+    // Two cases: An error and the JSON object to map as a Shopping Cart.
     func getPurchases(onCompletion: @escaping ([ShoppingCart]?, Error?) -> Void) {
         AuthenticationManager.shared.authenticate { (authResponse) in
             let requestedURL = self.URL + "/purchases"

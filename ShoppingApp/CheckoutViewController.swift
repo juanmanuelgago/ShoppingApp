@@ -14,7 +14,9 @@ class CheckoutViewController: UIViewController {
     @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var itemCollectionView: UICollectionView!
     
+    // This property establishes the read-only version. Initially is in these mode. Segues changes the value, depending on the previous view controller.
     var canCheckout = false
+    
     var shoppingCart = ShoppingCart()
     var items: [Item] = []
     
@@ -35,7 +37,7 @@ class CheckoutViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        self.tabBarController?.tabBar.isHidden = true
+        self.tabBarController?.tabBar.isHidden = true // Hide the tabbar, in order to prevent the navigation between tabs in this view controller.
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.title = "Shopping Cart"
     }
@@ -56,6 +58,7 @@ class CheckoutViewController: UIViewController {
     }
 
     // Method to style the Checkout button.
+    // Guard is used for the Read-Only version of this view controller.
     func styleCheckoutButton() {
         checkoutButton.layer.cornerRadius = checkoutButton.frame.height / 2
         guard canCheckout else {
@@ -94,8 +97,9 @@ class CheckoutViewController: UIViewController {
         }
     }
     
+    // Starts the process of checkout, calling the method in the RemoteService.
     @IBAction func checkoutShoppingCart(_ sender: Any) {
-        startActivityIndicator()
+        startActivityIndicator() // Inits the loader during the process of checkout, until a response is received.
         RemoteServiceManager.shared.createPurchase(shoppingCart: shoppingCart) { (success, error) in
             if let _ = error as Error? {
                 let alert = UIAlertController(title: "Error", message: "Unable to process your shopping cart. Please, try again later.", preferredStyle: .alert)
@@ -130,6 +134,7 @@ extension CheckoutViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        // This guard prevents the picker and the toolbar when the view controller is in Read-only mode.
         guard canCheckout else {
             return
         }

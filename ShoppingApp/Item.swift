@@ -30,6 +30,7 @@ class Item: Mappable {
         setRoundedPrice()
     }
     
+    // After the price is mapped, the price is rounded to only one digit after the comma.
     func setRoundedPrice() {
         if let varPrice = price as Double? {
             let fullPrice = varPrice

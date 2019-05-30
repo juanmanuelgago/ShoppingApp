@@ -37,7 +37,7 @@ class ShoppingBagViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.navigationController?.navigationBar.prefersLargeTitles = false
-        startActivityIndicator()
+        startActivityIndicator() //Method to init the activity indicator, because the requests are being made.
         initData()
         // If the shopping cart changed a certain value, the table must refresh its cells.
         itemTableView.reloadData()
@@ -57,11 +57,13 @@ class ShoppingBagViewController: UIViewController {
         // Add data to the banner array for the collection view.
         RemoteServiceManager.shared.getBanners { (arrayBanners, error) in
             if let _ = error as Error? {
+                // Shows alert for errors in the request.
                 let alert = UIAlertController(title: "Error", message: "Unexpected error with the banners.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default))
                 self.present(alert, animated: true, completion: nil)
             } else {
                 self.banners = []
+                // Fill the banner array
                 if let arrayBanners = arrayBanners as [ItemBanner]? {
                     for itemBanner in arrayBanners {
                         if let itemBanner = itemBanner as ItemBanner? {
@@ -74,6 +76,7 @@ class ShoppingBagViewController: UIViewController {
         }
         
         // Add data to the items array for the table view.
+        // This is the method that stops the activity indicator, either is with an error or with the data.
         RemoteServiceManager.shared.getItems { (arrayItems, error) in
             if let _ = error as Error? {
                 self.stopActivityIndicator()
@@ -125,6 +128,7 @@ class ShoppingBagViewController: UIViewController {
     }
     
     // Start the activity indicator. This method is called when the requests are being done.
+    // The component is inside a new view, initialized here.
     func startActivityIndicator() {
         let newView = UIView(frame: UIScreen.main.bounds)
         newView.tag = 100 // Random tag, for the process of dismissing the view.
@@ -139,7 +143,7 @@ class ShoppingBagViewController: UIViewController {
     
      func stopActivityIndicator() {
         activityIndicator.stopAnimating()
-        if let viewTag = self.view.viewWithTag(100) {
+        if let viewTag = self.view.viewWithTag(100) { // If the tag is 100, then it's the correct view to remove.
             viewTag.removeFromSuperview()
         }
     }
@@ -189,7 +193,7 @@ UICollectionViewDataSource, UIScrollViewDelegate, UICollectionViewDelegateFlowLa
         let identifier = "BannerCell"
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! BannerCollectionViewCell
         if let url = banners[indexPath.row].photoUrl as String?, let name = banners[indexPath.row].name as String?, let description = banners[indexPath.row].description as String? {
-            cell.bannerImageView.kf.setImage(with: URL(string: url))
+            cell.bannerImageView.kf.setImage(with: URL(string: url)) // Loads the image from the URL.
             cell.titleLabel.text = name
             cell.descriptionLabel.text = description
         }

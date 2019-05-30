@@ -14,6 +14,7 @@ enum ItemCategory: String {
     case dairy = "dairy"
 }
 
+// This extension is made so the cases in the enum are written with the first letter in capital.
 extension String {
     func capitalizingFirstLetter() -> String {
         return prefix(1).capitalized + dropFirst()
