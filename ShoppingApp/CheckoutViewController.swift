@@ -62,9 +62,9 @@ class CheckoutViewController: UIViewController {
     func styleCheckoutButton() {
         checkoutButton.layer.cornerRadius = checkoutButton.frame.height / 2
         guard canCheckout else {
-//            checkoutButton.isHidden = true
-            checkoutButton.isEnabled = false
-            checkoutButton.alpha = 0.25
+            checkoutButton.isHidden = true
+//            checkoutButton.isEnabled = false
+//            checkoutButton.alpha = 0.25
             return
         }
     }
